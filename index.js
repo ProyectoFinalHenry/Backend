@@ -1,12 +1,15 @@
 import server from "./src/app.js"; 
-import { conn } from "./src/db.js"; 
+import sequelize from "./src/db.js"; 
 import dotenv from "dotenv"; 
- 
+import seedCoffee from "./src/seeders/coffees/coffee.js";
 dotenv.config(); 
  
 const PORT = process.env.SERVER_PORT || 3001;
  
-conn.sync({ force: false }).then(() => { 
+sequelize.sync({ force: true }).then(() => { 
+
+  seedCoffee(sequelize);
+
   server.listen(PORT, () => { 
     console.log(`listening at ${PORT}`); 
   }); 
