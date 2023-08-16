@@ -9,6 +9,10 @@ export default function (sequelize) {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
       },
+      date: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+      },
       comments: {
         type: DataTypes.TEXT,
         allowNull: false,
