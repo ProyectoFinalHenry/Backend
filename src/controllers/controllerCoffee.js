@@ -1,6 +1,7 @@
 import sequelize from "../db.js";
 import { Op } from "sequelize";
 
+
 const { Coffee, Origin, Review, RoastingProfile, TypeOfCoffee, User } =
   sequelize.models;
 

@@ -32,7 +32,6 @@ export const getCoffeeById = async (req, res) => {
 };
 
 export const postCoffee = async (req, res) => {
-  console.log("handler post: ", req.body);
   try {
     const status = await post(req.body);
     res.status(200).json(status);
@@ -67,6 +66,7 @@ export const postUploadCoffeAsset = async (req, res) => {
     res.status(500).json({ message: 'Error al subir el archivo' });
   }
 }
+
 
 export const updateCoffee = async (req, res) => {
   const { id } = req.params;
