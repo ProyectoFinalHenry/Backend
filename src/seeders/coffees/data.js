@@ -46,7 +46,6 @@ const data = [
     origin: "Café de Origen Único",
     roastingProfile: "Tueste Medio",
   },
-  // 10
   {
     name: "Ethiopian Yirgacheffe",
     description:
@@ -167,7 +166,6 @@ const data = [
     origin: "Mezcla de Café",
     roastingProfile: "Tueste Oscuro",
   },
-  // 10
   {
     name: "Tostado Ligero de Etiopía Yirgacheffe",
     description:
@@ -288,7 +286,6 @@ const data = [
     origin: "Café de Origen Único",
     roastingProfile: "Tueste Oscuro",
   },
-  // 10
   {
     name: "Café Mañana Fresca",
     description:
@@ -409,6 +406,127 @@ const data = [
     origin: "Café de Origen Único",
     roastingProfile: "Tueste Medio",
   },
+  // 10
+  {
+    name: "Café de la Selva Amazónica",
+    description:
+      "Sumérgete en los sabores exuberantes y silvestres de la selva amazónica con cada sorbo de este café único.",
+    image:
+      "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
+    price: 15500,
+    stock: 22,
+    typeOfCoffee: "Café en grano",
+    origin: "Café de Origen Único",
+    roastingProfile: "Tueste Medio",
+  },
+  {
+    name: "Café Intenso Francés",
+    description:
+      "Explora la profundidad y riqueza de los sabores del café francés en cada taza.",
+    image:
+      "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
+    price: 13500,
+    stock: 20,
+    typeOfCoffee: "Café molido",
+    origin: "Mezcla de Café",
+    roastingProfile: "Tueste Oscuro",
+  },
+  {
+    name: "Café Seducción Italiana",
+    description:
+      "Deleita tus sentidos con este café italiano de sabor seductor y profundo, ideal para los amantes del café fuerte.",
+    image:
+      "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
+    price: 14500,
+    stock: 18,
+    typeOfCoffee: "Café en grano",
+    origin: "Mezcla de Café",
+    roastingProfile: "Tueste Oscuro",
+  },
+  {
+    name: "Café Elegancia Africana",
+    description:
+      "Embárcate en un viaje de sabores africanos con este café elegante y vibrante que captura la esencia del continente.",
+    image:
+      "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
+    price: 16000,
+    stock: 16,
+    typeOfCoffee: "Café en cápsulas",
+    origin: "Café de Origen Único",
+    roastingProfile: "Tueste Medio",
+  },
+  {
+    name: "Café Místico de Montaña",
+    description:
+      "Descubre la magia y el misterio de las montañas a través de este café con notas místicas y envolventes.",
+    image:
+      "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
+    price: 15200,
+    stock: 14,
+    typeOfCoffee: "Café en grano",
+    origin: "Café de Origen Único",
+    roastingProfile: "Tueste Medio",
+  },
+  {
+    name: "Café Vibrante Kenya",
+    description:
+      "Experimenta la vibrante energía y los sabores únicos de Kenia en cada sorbo de este café excepcional.",
+    image:
+      "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
+    price: 14000,
+    stock: 15,
+    typeOfCoffee: "Café en grano",
+    origin: "Café de Origen Único",
+    roastingProfile: "Tueste Ligero",
+  },
+  // 10
+  {
+    name: "Café Profundo de Sumatra",
+    description:
+      "Sumérgete en los sabores profundos y terrosos de Sumatra con este café de tueste oscuro y carácter intenso.",
+    image:
+      "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
+    price: 14800,
+    stock: 12,
+    typeOfCoffee: "Café en grano",
+    origin: "Café de Origen Único",
+    roastingProfile: "Tueste Oscuro",
+  },
+  {
+    name: "Café Suave Descafeinado",
+    description:
+      "Disfruta de la suavidad y sabor delicado de este café descafeinado perfecto para momentos de relajación.",
+    image:
+      "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
+    price: 12500,
+    stock: 20,
+    typeOfCoffee: "Café molido",
+    origin: "Mezcla de Café",
+    roastingProfile: "Tueste Medio",
+  },
+  {
+    name: "Café Equilibrado Guatemalteco",
+    description:
+      "Descubre el equilibrio perfecto de sabores en este café guatemalteco con matices dulces y afrutados.",
+    image:
+      "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
+    price: 13000,
+    stock: 18,
+    typeOfCoffee: "Café en grano",
+    origin: "Café de Origen Único",
+    roastingProfile: "Tueste Medio",
+  },
+  {
+    name: "Café Sutil Etiopía",
+    description:
+      "Sutilidad y elegancia definen a este café etíope con notas florales y afrutadas que cautivarán tus sentidos.",
+    image:
+      "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
+    price: 13800,
+    stock: 16,
+    typeOfCoffee: "Café en cápsulas",
+    origin: "Café de Origen Único",
+    roastingProfile: "Tueste Ligero",
+  },
 ];
 export default data;
-// total: 34
