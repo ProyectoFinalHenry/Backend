@@ -14,7 +14,7 @@ export default function (sequelize) {
         allowNull: false,
         unique: true,
         values: [
-          "Café en grano",
+          "Café en grano entero",
           "Café molido",
           "Café en cápsulas",
           "Café instantáneo",
