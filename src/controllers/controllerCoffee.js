@@ -15,6 +15,7 @@ export const getAll = async ({
       { model: TypeOfCoffee, attributes: ["type"] },
       { model: Origin, attributes: ["origin"] },
       { model: RoastingProfile, attributes: ["profile"] },
+      {model: Review, attributes: ["rating"]}
     ],
     attributes: {
       exclude: ["TypeOfCoffeeId", "RoastingProfileId", "OriginId"],
@@ -59,7 +60,7 @@ export const getById = async (id) => {
       { model: RoastingProfile, attributes: ["profile"] },
       {
         model: Review,
-        attributes: ["rating", "comments"],
+        attributes: ["date", "rating", "comments"],
         include: { model: User, attributes: ["name", "image"] },
       },
     ],
