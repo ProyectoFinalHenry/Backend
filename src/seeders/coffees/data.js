@@ -12,7 +12,7 @@ const data = [
     roastingProfile: "Tueste Medio",
   },
   {
-    name: "Tueste Claro de Ethiopian Yirgacheffe",
+    name: "Intenso Colombiano",
     description:
       "Un café de tueste claro brillante y floral con notas de cítricos y jazmín.",
     image:
@@ -47,7 +47,7 @@ const data = [
     roastingProfile: "Tueste Medio",
   },
   {
-    name: "Ethiopian Yirgacheffe",
+    name: "Profundo de Sumatra",
     description:
       "Deléitate con las notas afrutadas y florales del café Ethiopian Yirgacheffe.",
     image:
@@ -59,9 +59,8 @@ const data = [
     roastingProfile: "Tueste Ligero",
   },
   {
-    name: "Colombian Supremo",
-    description:
-      "Déjate llevar por los sabores ricos y nueces del café Colombian Supremo.",
+    name: "Oro Africano",
+    description: "Déjate llevar por los sabores ricos y nueces del café.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 10500,
@@ -239,7 +238,7 @@ const data = [
     roastingProfile: "Tueste Ligero",
   },
   {
-    name: "Café Cielo Estrellado",
+    name: "Cielo Estrellado",
     description:
       "Deleita tus sentidos con el sabor celestial de este café de origen único con notas frutales.",
     image:
@@ -263,9 +262,9 @@ const data = [
     roastingProfile: "Tueste Oscuro",
   },
   {
-    name: "Café Cielo Estrellado",
+    name: "Cosecha Dorada",
     description:
-      "Deleita tus sentidos con el sabor celestial de este café de origen único con notas frutales.",
+      "Deleita tus sentidos con la esencia celestial de este café de origen singular, donde las notas frutales danzan en cada sorbo.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 14000,
@@ -275,9 +274,9 @@ const data = [
     roastingProfile: "Tueste Medio",
   },
   {
-    name: "Café Nocturno",
+    name: "Oasis Fragante",
     description:
-      "Sumérgete en la riqueza y profundidad del café de tueste oscuro, perfecto para una velada tranquila.",
+      "Sumérgete en la opulencia y profundidad del café de tueste oscuro, ideal para una velada serena y contemplativa.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 13000,
@@ -530,3 +529,12 @@ const data = [
   },
 ];
 export default data;
+
+// const nameSet = new Set();
+// for (const item of data) {
+//   if (nameSet.has(item.description)) {
+//     console.log("Duplicate found: " + item.description);
+//   } else {
+//     nameSet.add(item.description);
+//   }
+// }
