@@ -21,8 +21,8 @@ export default function (sequelize) {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            isUrl: true
-        }
+          isUrl: true,
+        },
       },
       price: {
         type: DataTypes.DECIMAL(10, 2),
@@ -35,8 +35,8 @@ export default function (sequelize) {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
-            min: 0
-        }
+          min: 0,
+        },
       },
       isActive: {
         type: DataTypes.BOOLEAN,
