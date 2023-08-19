@@ -1,144 +1,144 @@
 const data = [
     {
-      name: "Colombian Medium Roast",
-      description: "A balanced and flavorful medium roast coffee from the hills of Colombia.",
+      name: "Tueste Medio Colombiano",
+      description: "Un café equilibrado y sabroso de tueste medio de las montañas de Colombia.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 12000,
       stock: 15,
-      typeOfCoffee: "Whole bean coffee",
-      origin: "Single Origin Coffee",
-      roastingProfile: "Medium Roast",
+      typeOfCoffee: "Café en grano entero",
+      origin: "Café de origen único",
+      roastingProfile: "Tostado medio",
     },
     {
       name: "Ethiopian Yirgacheffe Light Roast",
-      description: "A bright and floral light roast coffee with notes of citrus and jasmine.",
+      description: "Un café de tueste claro brillante y floral con notas de cítricos y jazmín.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 14000,
       stock: 20,
-      typeOfCoffee: "Whole bean coffee",
-      origin: "Single Origin Coffee",
-      roastingProfile: "Light Roast"
+      typeOfCoffee: "Café en grano entero",
+      origin: "Café de origen único",
+      roastingProfile: "Tostado ligero"
     },
     {
 
       name: "Ethiopian Yirgacheffe",
-      description: "A bright and floral coffee with notes of jasmine and citrus.",
+      description: "Un café brillante y floral con notas de jazmín y cítricos.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 12000,
       stock: 15,
-      typeOfCoffee: "Whole bean coffee",
-      origin: "Single Origin Coffee",
-      roastingProfile: "Light Roast"
+      typeOfCoffee: "Café en grano entero",
+      origin: "Café de origen único",
+      roastingProfile: "Tostado ligero"
     },
     {
       name: "Colombian Supremo",
-      description: "A balanced coffee with hints of chocolate and caramel sweetness.",
+      description: "Un café equilibrado con toques de chocolate y dulzura de caramelo.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 9500,
       stock: 20,
-      typeOfCoffee: "Ground coffee",
-      origin: "Single Origin Coffee",
-      roastingProfile: "Medium Roast"
+      typeOfCoffee: "Café molido",
+      origin: "Café de origen único",
+      roastingProfile: "Tostado medio"
     },
     {
       name: "Ethiopian Yirgacheffe",
-      description: "Delight in the fruity and floral notes of Ethiopian Yirgacheffe coffee.",
+      description: "Deléitese con las notas afrutadas y florales del café etíope Yirgacheffe.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 12000,
       stock: 15,
-      typeOfCoffee: "Whole bean coffee",
-      origin: "Single Origin Coffee",
-      roastingProfile: "Light Roast"
+      typeOfCoffee: "Café en grano entero",
+      origin: "Café de origen único",
+      roastingProfile: "Tostado ligero"
     },
     {
       name: "Colombian Supremo",
-      description: "Indulge in the rich and nutty flavors of Colombian Supremo coffee.",
+      description: "Deléitese con los sabores ricos y a nuez del café Supremo colombiano.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 10500,
       stock: 20,
-      typeOfCoffee: "Ground coffee",
-      origin: "Single Origin Coffee",
-      roastingProfile:"Medium Roast"
+      typeOfCoffee: "Café molido",
+      origin: "Café de origen único",
+      roastingProfile:"Tostado medio"
     },
     {
       name: "Brazilian Santos",
-      description: "Experience the smooth and chocolatey notes of Brazilian Santos coffee.",
+      description: "Experimente las notas suaves y achocolatadas del café brasileño Santos.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 9000,
       stock: 18,
-      typeOfCoffee: "Capsule coffee",
-      origin: "Single Origin Coffee",
-      roastingProfile:"Medium Roast"
+      typeOfCoffee: "Café en cápsula",
+      origin: "Café de origen único",
+      roastingProfile:"Tostado medio"
     },
     {
       name: "Sumatra Mandheling",
-      description: "Savor the bold and earthy flavors of Sumatra Mandheling coffee.",
+      description: "Saboree los sabores atrevidos y terrosos del café Sumatra Mandheling.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 13500,
       stock: 12,
-      typeOfCoffee: "Whole bean coffee",
-      origin: "Single Origin Coffee",
-      roastingProfile:"Dark Roast"
+      typeOfCoffee: "Café en grano entero",
+      origin: "Café de origen único",
+      roastingProfile:"Tostado oscuro"
     },
     {
       name: "Kenyan AA",
-      description: "Discover the bright and fruity notes of Kenyan AA coffee.",
+      description: "Descubre las notas brillantes y afrutadas del café AA de Kenia.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 13000,
       stock: 8,
-      typeOfCoffee: "Ground coffee",
-      origin: "Single Origin Coffee",
-      roastingProfile:"Light Roast"
+      typeOfCoffee: "Café molido",
+      origin: "Café de origen único",
+      roastingProfile:"Tostado ligero"
     },
     {
       name: "Italian Espresso Blend",
-      description: "Experience the bold and intense flavors of our Italian Espresso Blend.",
+      description: "Experimente los sabores audaces e intensos de nuestra Mezcla Italiana Espresso.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 15000,
       stock: 10,
-      typeOfCoffee: "Whole bean coffee",
-      origin: "Blend of Coffee",
-      roastingProfile:"Dark Roast"
+      typeOfCoffee: "Café en grano entero",
+      origin: "Mezcla de Café",
+      roastingProfile:"Tostado oscuro"
     },
     {
       name: "Guatemala Antigua",
-      description: "Enjoy the well-balanced and smooth flavors of Guatemala Antigua coffee.",
+      description: "Experimente los sabores audaces e intensos de nuestra Mezcla Italiana Espresso.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 11500,
       stock: 14,
-      typeOfCoffee: "Capsule coffee",
-      origin: "Single Origin Coffee",
-      roastingProfile:"Medium Roast"
+      typeOfCoffee: "Café en cápsula",
+      origin: "Café de origen único",
+      roastingProfile:"Tostado medio"
     },
     {
       name: "Decaf Swiss Water Process",
-      description: "Experience the rich and smooth flavors of our Decaf Swiss Water Process coffee.",
+      description: "Experimente los sabores ricos y suaves de nuestro café Decaf Swiss Water Process.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 9500,
       stock: 25,
-      typeOfCoffee: "Ground coffee",
-      origin: "Blend of Coffee",
-      roastingProfile:"Medium Roast"
+      typeOfCoffee: "Café molido",
+      origin: "Mezcla de Café",
+      roastingProfile:"Tostado medio"
     },
     {
       name: "Costa Rican Tarrazú",
-      description: "Indulge in the sweet and citrusy notes of Costa Rican Tarrazú coffee.",
+      description: "Deléitese con las notas dulces y cítricas del café Tarrazú de Costa Rica.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 11000,
       stock: 9,
-      typeOfCoffee: "Whole bean coffee",
-      origin: "Single Origin Coffee",
-      roastingProfile:"Light Roast"
+      typeOfCoffee: "Café en grano entero",
+      origin: "Café de origen único",
+      roastingProfile:"Tostado ligero"
     },
     {
       name: "French Roast Blend",
-      description: "Experience the bold and smoky flavors of our French Roast Blend.",
+      description: "Experimente los sabores audaces y ahumados de nuestra mezcla de tostado francés.",
       image: "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
       price: 12500,
       stock: 7,
-      typeOfCoffee: "Ground coffee",
-      origin: "Blend of Coffee",
-      roastingProfile:"Dark Roast"
+      typeOfCoffee: "Café molido",
+      origin: "Mezcla de Café",
+      roastingProfile:"Tostado oscuro"
     }
   ]
   export default data;

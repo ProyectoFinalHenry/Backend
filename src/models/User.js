@@ -15,11 +15,11 @@ export default function (sequelize) {
         validate: {
           len: {
             args: [2, 20],
-            msg: "The name must contain between 2 and 20 characters"
+            msg: "El nombre debe contener entre 2 y 20 caracteres"
           },
           isAlphanumeric: {
             args: true,
-            msg: "The name does not allow special characters"
+            msg: "El nombre no admite caracteres especiales"
           },
         },
       },
