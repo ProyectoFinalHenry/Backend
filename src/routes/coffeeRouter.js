@@ -1,8 +1,10 @@
 import { Router } from "express";
+
 import {
   getCoffees,
   getCoffeeById,
   postCoffee,
+  postUploadCoffeAsset,
   updateCoffee,
   deleteCoffee,
 } from "../handlers/handlerCoffee.js";
@@ -19,6 +21,7 @@ coffeeRouter
   .get("/", validateQuery, getCoffees)
   .get("/:id", validateId, getCoffeeById)
   .post("/", validatePost, postCoffee)
+  .post("/upload", postUploadCoffeAsset)
   .put("/:id", validateId, validatePut, updateCoffee)
   .delete("/:id", validateId, deleteCoffee);
 
