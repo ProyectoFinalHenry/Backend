@@ -529,12 +529,3 @@ const data = [
   },
 ];
 export default data;
-
-// const nameSet = new Set();
-// for (const item of data) {
-//   if (nameSet.has(item.description)) {
-//     console.log("Duplicate found: " + item.description);
-//   } else {
-//     nameSet.add(item.description);
-//   }
-// }
