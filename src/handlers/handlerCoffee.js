@@ -1,8 +1,8 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import cloudinary from '../cloudinaryConfig.js';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+import cloudinary from "../cloudinaryConfig.js";
 
 import {
   getAll,
@@ -45,7 +45,7 @@ export const postUploadCoffeAsset = async (req, res) => {
     const { file, fname } = req.body;
     // Directorio donde se guardarán los archivos
     const __dirname = dirname(fileURLToPath(import.meta.url));
-    const uploadDir = path.join(__dirname, '../uploads');
+    const uploadDir = path.join(__dirname, "../uploads");
 
     // Crear el directorio de subida si no existe
     if (!fs.existsSync(uploadDir)) {
@@ -53,20 +53,21 @@ export const postUploadCoffeAsset = async (req, res) => {
     }
     // Decodificar el archivo en base64 y obtener la extensión
     const matches = file.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
-    const fileExtension = matches[1].split('/')[1];
+    const fileExtension = matches[1].split("/")[1];
     const base64Data = matches[2];
     // Generar un nombre de archivo único
     const filename = `${fname.split(".")[0]}.${fileExtension}`;
     // Crear y escribir el archivo en el sistema de archivos
-    fs.writeFileSync(path.join(uploadDir, filename), base64Data, 'base64');
-    const { secure_url } = await cloudinary.uploader.upload(path.join(uploadDir, filename));
-    res.json({ message: 'Archivo subido exitosamente', imageUrl: secure_url });
+    fs.writeFileSync(path.join(uploadDir, filename), base64Data, "base64");
+    const { secure_url } = await cloudinary.uploader.upload(
+      path.join(uploadDir, filename)
+    );
+    res.json({ message: "Archivo subido exitosamente", imageUrl: secure_url });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Error al subir el archivo' });
+    res.status(500).json({ message: "Error al subir el archivo" });
   }
-}
-
+};
 
 export const updateCoffee = async (req, res) => {
   const { id } = req.params;

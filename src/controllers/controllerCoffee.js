@@ -1,7 +1,6 @@
 import sequelize from "../db.js";
 import { Op } from "sequelize";
 
-
 const { Coffee, Origin, Review, RoastingProfile, TypeOfCoffee, User } =
   sequelize.models;
 
@@ -16,7 +15,7 @@ export const getAll = async ({
       { model: TypeOfCoffee, attributes: ["type"] },
       { model: Origin, attributes: ["origin"] },
       { model: RoastingProfile, attributes: ["profile"] },
-      {model: Review, attributes: ["rating"]}
+      { model: Review, attributes: ["rating"] },
     ],
     attributes: {
       exclude: ["TypeOfCoffeeId", "RoastingProfileId", "OriginId"],
