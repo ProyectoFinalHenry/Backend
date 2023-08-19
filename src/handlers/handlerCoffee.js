@@ -17,7 +17,7 @@ export const getCoffees = async (req, res) => {
     let coffees = await getAll(req.query);
     res.status(200).json(coffees);
   } catch (error) {
-    res.status(404).json(error.message);
+    res.status(404).json({error: error.message});
   }
 };
 
@@ -27,7 +27,7 @@ export const getCoffeeById = async (req, res) => {
     const coffee = await getById(id);
     res.status(200).json(coffee);
   } catch (error) {
-    res.status(404).json(error.message);
+    res.status(404).json({error: error.message});
   }
 };
 
@@ -36,7 +36,7 @@ export const postCoffee = async (req, res) => {
     const status = await post(req.body);
     res.status(200).json(status);
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({error: error.message});
   }
 };
 
@@ -65,7 +65,7 @@ export const postUploadCoffeAsset = async (req, res) => {
     res.json({ message: "Archivo subido exitosamente", imageUrl: secure_url });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error al subir el archivo" });
+    res.status(500).json({ error: "Error al subir el archivo" });
   }
 };
 
@@ -75,7 +75,7 @@ export const updateCoffee = async (req, res) => {
     const status = await update(id, req.body);
     res.status(200).json(status);
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json({error: error.message});
   }
 };
 
@@ -85,6 +85,6 @@ export const deleteCoffee = async (req, res) => {
     const deleteWine = await remove(id);
     res.status(200).json(deleteWine);
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({error: error.message});
   }
 };

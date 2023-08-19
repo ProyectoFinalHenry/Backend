@@ -46,7 +46,7 @@ export const getAll = async ({
 
   const dataDB = await Coffee.findAll(optionsDB);
   if (!dataDB.length)
-    throw new Error("Sorry no coffees found :(, try doing another search");
+    throw new Error("Lo siento, no se encontraron cafés, solo tasas vacias :(, intente hacer otra búsqueda");
 
   return dataDB;
 };
@@ -70,7 +70,7 @@ export const getById = async (id) => {
   });
   if (!data)
     throw new Error(
-      "That coffee was not found, but soon we will prepare more ;)"
+      "No se encontró ese café, pero pronto prepararemos más ;)"
     );
 
   return data;
@@ -99,7 +99,7 @@ export const post = async (coffeeData) => {
     },
   });
 
-  if (!created) throw new Error("This coffee already exists");
+  if (!created) throw new Error("Este café ya existe dentro del sistema :o");
 
   const currentRoasting = await RoastingProfile.findOrCreate({
     where: { profile: roastingProfile },
@@ -114,14 +114,14 @@ export const post = async (coffeeData) => {
   await coffee.setOrigin(currentOrigin[0]);
 
   return {
-    status: "Created successfully",
+    status: "Creado con éxito :D",
   };
 };
 
 export const update = async (id, coffeeData) => {
   const { defaultCoffee, categoryCoffee } = coffeeData;
   if (!defaultCoffee && !categoryCoffee)
-    throw new Error("The format of the values is incorrect");
+    throw new Error("El formato de los valores recibidos es incorrecto.");
 
   const coffee = await Coffee.findByPk(id);
 
@@ -149,17 +149,17 @@ export const update = async (id, coffeeData) => {
     }
   }
   return {
-    status: "Updated successfully",
+    status: "Actualizado con éxito :)",
   };
 };
 
 export const remove = async (id) => {
   const coffee = await Coffee.findByPk(id);
   if (!coffee) {
-    throw new Error("Coffee does not exist");
+    throw new Error("Este cafe no existe");
   }
   await coffee.destroy();
   return {
-    status: "Deleted successfully",
+    status: "Eliminado con éxito :v",
   };
 };

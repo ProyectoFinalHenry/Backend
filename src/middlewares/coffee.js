@@ -34,13 +34,17 @@ export const validatePost = [
     min: 1,
   }),
   body("typeOfCoffee").isIn([
-    "Whole bean coffee",
-    "Ground coffee",
-    "Capsule coffee",
-    "Instant coffee",
+    "Café en grano entero",
+    "Café molido",
+    "Café en cápsula",
+    "Café instantáneo",
   ]),
-  body("origin").isIn(["Single Origin Coffee", "Blend of Coffee"]),
-  body("roastingProfile").isIn(["Light Roast", "Medium Roast", "Dark Roast"]),
+  body("origin").isIn(["Café de origen único", "Mezcla de Café"]),
+  body("roastingProfile").isIn([
+    "Tostado ligero",
+    "Tostado medio",
+    "Tostado oscuro",
+  ]),
   (req, res, next) => {
     validate(req, res, next);
   },
@@ -51,9 +55,9 @@ export const validatePut = [
     .optional()
     .custom((value, { req }) => {
       const { id, name, description, image, price, stock, isActive } = value;
-      if (id) throw new Error("id should not be updated");
+      if (id) throw new Error("El id no debe actualizarse");
       if (!name && !description && !image && !price && !stock && !isActive)
-        throw new Error("defaultCoffee has no relevant information");
+        throw new Error("defaultCoffee no tiene informacion relevante");
       return true;
     }),
   body("categoryCoffee")
@@ -61,11 +65,10 @@ export const validatePut = [
     .custom((value, { req }) => {
       const { roastingProfile, typeOfCoffee, origin } = value;
       if (!roastingProfile && !typeOfCoffee && !origin)
-        throw new Error("categoryCoffee has no relevant information");
+        throw new Error("categoryCoffee no tiene informacion relevante");
       return true;
     }),
   (req, res, next) => {
     validate(req, res, next);
   },
 ];
-[, , "Dark Roast"];

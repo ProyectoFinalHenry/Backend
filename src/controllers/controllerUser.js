@@ -19,7 +19,7 @@ export const newUser = async ({ name, email, password, image }) => {
         "https://i.pinimg.com/564x/0e/6e/aa/0e6eaa94ab71d91b7d0f1dea83d49f61.jpg",
     },
   });
-  if (!created) throw new Error("This user alredy exist");
+  if (!created) throw new Error("Este usuario ya existe");
 
   const token = jwt.sign({ id, role }, process.env.SECRET_KEY, {
     expiresIn: "12h",
@@ -30,12 +30,12 @@ export const newUser = async ({ name, email, password, image }) => {
 
 export const authentication = async ({ email, password }) => {
   const user = await User.findOne({ where: { email } });
-  if (!user) throw new Error("Email or password was not correct");
+  if (!user) throw new Error("Email o contraseña incorrecta");
 
   const isValidPassword = await bcrypt.compare(password, user.password);
 
-  if (!isValidPassword) throw new Error("Email or password was not correct");
-  if (user.isActive === false) throw new Error("This user is banend");
+  if (!isValidPassword) throw new Error("Email o contraseña incorrecta");
+  if (user.isActive === false) throw new Error("Este usuario tiene el acceso restringido");
 
   const token = jwt.sign(
     { id: user.id, role: user.role },
@@ -77,13 +77,13 @@ export const getData = async (id) => {
 export const update = async (id, data) => {
   await User.update(data, { where: { id } });
   return {
-    status: "Update successfully",
+    status: "Actualizado con éxito",
   };
 };
 
 export const remove = async (id) => {
   await User.destroy({ where: { id } });
   return {
-    status: "Deleted successfully",
+    status: "Eliminado con éxito",
   };
 };
