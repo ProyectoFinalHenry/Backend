@@ -1,15 +1,15 @@
 const data = [
   {
-    name: "Tueste Medio Colombiano",
+    name: "Tostado medio Colombiano",
     description:
-      "Un café de tueste medio equilibrado y sabroso de las colinas de Colombia.",
+      "Un café de Tostado medio equilibrado y sabroso de las colinas de Colombia.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 12000,
     stock: 15,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Intenso Colombiano",
@@ -20,8 +20,8 @@ const data = [
     price: 14000,
     stock: 20,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Ligero",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado ligero",
   },
   {
     name: "Ethiopian Yirgacheffe",
@@ -31,8 +31,8 @@ const data = [
     price: 12000,
     stock: 15,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Ligero",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado ligero",
   },
   {
     name: "Colombian Supremo",
@@ -43,8 +43,8 @@ const data = [
     price: 9500,
     stock: 20,
     typeOfCoffee: "Café molido",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Profundo de Sumatra",
@@ -55,8 +55,8 @@ const data = [
     price: 12000,
     stock: 15,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Ligero",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado ligero",
   },
   {
     name: "Oro Africano",
@@ -66,8 +66,8 @@ const data = [
     price: 10500,
     stock: 20,
     typeOfCoffee: "Café molido",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Brazilian Santos",
@@ -78,8 +78,8 @@ const data = [
     price: 9000,
     stock: 18,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Sumatra Mandheling",
@@ -90,8 +90,8 @@ const data = [
     price: 13500,
     stock: 12,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Oscuro",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado oscuro",
   },
   {
     name: "Kenyan AA",
@@ -102,8 +102,8 @@ const data = [
     price: 13000,
     stock: 8,
     typeOfCoffee: "Café molido",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Ligero",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado ligero",
   },
   {
     name: "Mezcla de Espresso Italiano",
@@ -115,7 +115,7 @@ const data = [
     stock: 10,
     typeOfCoffee: "Café en grano entero",
     origin: "Mezcla de Café",
-    roastingProfile: "Tueste Oscuro",
+    roastingProfile: "Tostado oscuro",
   },
   {
     name: "Guatemala Antigua",
@@ -126,8 +126,8 @@ const data = [
     price: 11500,
     stock: 14,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Descafeinado Proceso de Agua Suiza",
@@ -139,7 +139,7 @@ const data = [
     stock: 25,
     typeOfCoffee: "Café molido",
     origin: "Mezcla de Café",
-    roastingProfile: "Tueste Medio",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Costa Rican Tarrazú",
@@ -150,8 +150,8 @@ const data = [
     price: 11000,
     stock: 9,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Ligero",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado ligero",
   },
   {
     name: "Mezcla de Tueste Francés",
@@ -163,7 +163,7 @@ const data = [
     stock: 7,
     typeOfCoffee: "Café molido",
     origin: "Mezcla de Café",
-    roastingProfile: "Tueste Oscuro",
+    roastingProfile: "Tostado oscuro",
   },
   {
     name: "Tostado Ligero de Etiopía Yirgacheffe",
@@ -174,8 +174,8 @@ const data = [
     price: 13000,
     stock: 10,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Ligero",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado ligero",
   },
   {
     name: "Mezcla Espresso Italiano",
@@ -187,7 +187,7 @@ const data = [
     stock: 15,
     typeOfCoffee: "Café molido",
     origin: "Mezcla de Café",
-    roastingProfile: "Tueste Oscuro",
+    roastingProfile: "Tostado oscuro",
   },
   {
     name: "Café en Cápsulas de Colombia Supremo",
@@ -198,8 +198,8 @@ const data = [
     price: 12000,
     stock: 20,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Café Instantáneo de Sumatra Mandheling",
@@ -210,8 +210,8 @@ const data = [
     price: 11000,
     stock: 25,
     typeOfCoffee: "Café instantáneo",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Oscuro",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado oscuro",
   },
   {
     name: "Aroma de Montaña",
@@ -222,44 +222,44 @@ const data = [
     price: 12500,
     stock: 20,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Energía Matinal",
     description:
-      "Obtén un impulso de energía al empezar tu día con este café de tueste ligero y revitalizante.",
+      "Obtén un impulso de energía al empezar tu día con este café de Tostado ligero y revitalizante.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 13500,
     stock: 18,
     typeOfCoffee: "Café molido",
     origin: "Mezcla de Café",
-    roastingProfile: "Tueste Ligero",
+    roastingProfile: "Tostado ligero",
   },
   {
     name: "Cielo Estrellado",
     description:
-      "Deleita tus sentidos con el sabor celestial de este café de origen único con notas frutales.",
+      "Deleita tus sentidos con el sabor celestial de este Café de origen Único con notas frutales.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 14000,
     stock: 16,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Café Nocturno",
     description:
-      "Sumérgete en la riqueza y profundidad del café de tueste oscuro, perfecto para una velada tranquila.",
+      "Sumérgete en la riqueza y profundidad del café de Tostado oscuro, perfecto para una velada tranquila.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 13000,
     stock: 14,
     typeOfCoffee: "Café molido",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Oscuro",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado oscuro",
   },
   {
     name: "Cosecha Dorada",
@@ -270,80 +270,80 @@ const data = [
     price: 14000,
     stock: 16,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Oasis Fragante",
     description:
-      "Sumérgete en la opulencia y profundidad del café de tueste oscuro, ideal para una velada serena y contemplativa.",
+      "Sumérgete en la opulencia y profundidad del café de Tostado oscuro, ideal para una velada serena y contemplativa.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 13000,
     stock: 14,
     typeOfCoffee: "Café molido",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Oscuro",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado oscuro",
   },
   {
     name: "Café Mañana Fresca",
     description:
-      "Empieza tu día con energía y frescura gracias a este café de tueste ligero y notas frutales.",
+      "Empieza tu día con energía y frescura gracias a este café de Tostado ligero y notas frutales.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 12500,
     stock: 18,
     typeOfCoffee: "Café en grano entero",
     origin: "Mezcla de Café",
-    roastingProfile: "Tueste Ligero",
+    roastingProfile: "Tostado ligero",
   },
   {
     name: "Café Intenso",
     description:
-      "Experimenta la intensidad y el cuerpo de este café de tueste oscuro con notas a chocolate amargo.",
+      "Experimenta la intensidad y el cuerpo de este café de Tostado oscuro con notas a chocolate amargo.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 15000,
     stock: 12,
     typeOfCoffee: "Café en grano entero",
     origin: "Mezcla de Café",
-    roastingProfile: "Tueste Oscuro",
+    roastingProfile: "Tostado oscuro",
   },
   {
     name: "Café Aromático Matutino",
     description:
-      "Comienza tu día con este café de tueste ligero y aroma estimulante.",
+      "Comienza tu día con este café de Tostado ligero y aroma estimulante.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 12500,
     stock: 18,
     typeOfCoffee: "Café en grano entero",
     origin: "Mezcla de Café",
-    roastingProfile: "Tueste Ligero",
+    roastingProfile: "Tostado ligero",
   },
   {
     name: "Café Intenso Nocturno",
     description:
-      "Disfruta de la intensidad y profundidad de este café de tueste oscuro en tus momentos de relajación.",
+      "Disfruta de la intensidad y profundidad de este café de Tostado oscuro en tus momentos de relajación.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 13000,
     stock: 14,
     typeOfCoffee: "Café molido",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Oscuro",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado oscuro",
   },
   {
     name: "Café Exótico Bali",
     description:
-      "Viaja a Bali a través de los sabores exóticos y únicos de este café de origen único.",
+      "Viaja a Bali a través de los sabores exóticos y únicos de este Café de origen Único.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 14000,
     stock: 16,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Café Premium de Montaña",
@@ -354,8 +354,8 @@ const data = [
     price: 15000,
     stock: 20,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Café Elegante Italiano",
@@ -367,7 +367,7 @@ const data = [
     stock: 18,
     typeOfCoffee: "Café molido",
     origin: "Mezcla de Café",
-    roastingProfile: "Tueste Medio",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Café Descafeinado Suave",
@@ -379,7 +379,7 @@ const data = [
     stock: 25,
     typeOfCoffee: "Café molido",
     origin: "Mezcla de Café",
-    roastingProfile: "Tueste Medio",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Café Afrutado Kenia",
@@ -390,8 +390,8 @@ const data = [
     price: 11500,
     stock: 14,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Ligero",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado ligero",
   },
   {
     name: "Café Sedoso Honduras",
@@ -402,8 +402,8 @@ const data = [
     price: 12000,
     stock: 15,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   // 10
   {
@@ -415,8 +415,8 @@ const data = [
     price: 15500,
     stock: 22,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Café Intenso Francés",
@@ -428,7 +428,7 @@ const data = [
     stock: 20,
     typeOfCoffee: "Café molido",
     origin: "Mezcla de Café",
-    roastingProfile: "Tueste Oscuro",
+    roastingProfile: "Tostado oscuro",
   },
   {
     name: "Café Seducción Italiana",
@@ -440,7 +440,7 @@ const data = [
     stock: 18,
     typeOfCoffee: "Café en grano entero",
     origin: "Mezcla de Café",
-    roastingProfile: "Tueste Oscuro",
+    roastingProfile: "Tostado oscuro",
   },
   {
     name: "Café Elegancia Africana",
@@ -451,8 +451,8 @@ const data = [
     price: 16000,
     stock: 16,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Café Místico de Montaña",
@@ -463,8 +463,8 @@ const data = [
     price: 15200,
     stock: 14,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Café Vibrante Kenya",
@@ -475,21 +475,21 @@ const data = [
     price: 14000,
     stock: 15,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Ligero",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado ligero",
   },
   // 10
   {
     name: "Café Profundo de Sumatra",
     description:
-      "Sumérgete en los sabores profundos y terrosos de Sumatra con este café de tueste oscuro y carácter intenso.",
+      "Sumérgete en los sabores profundos y terrosos de Sumatra con este café de Tostado oscuro y carácter intenso.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 14800,
     stock: 12,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Oscuro",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado oscuro",
   },
   {
     name: "Café Suave Descafeinado",
@@ -501,7 +501,7 @@ const data = [
     stock: 20,
     typeOfCoffee: "Café molido",
     origin: "Mezcla de Café",
-    roastingProfile: "Tueste Medio",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Café Equilibrado Guatemalteco",
@@ -512,8 +512,8 @@ const data = [
     price: 13000,
     stock: 18,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Medio",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado medio",
   },
   {
     name: "Café Sutil Etiopía",
@@ -524,8 +524,8 @@ const data = [
     price: 13800,
     stock: 16,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de Origen Único",
-    roastingProfile: "Tueste Ligero",
+    origin: "Café de origen Único",
+    roastingProfile: "Tostado ligero",
   },
 ];
 export default data;

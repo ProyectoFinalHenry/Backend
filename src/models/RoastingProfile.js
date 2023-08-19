@@ -13,7 +13,7 @@ export default function (sequelize) {
         type: DataTypes.ENUM,
         allowNull: false,
         unique: true,
-        values: ["Tueste Ligero", "Tueste Medio", "Tueste Oscuro"],
+        values: ["Tostado ligero", "Tostado medio", "Tostado oscuro"],
       },
     },
     { timestamps: false }
