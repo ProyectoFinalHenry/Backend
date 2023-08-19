@@ -8,7 +8,7 @@ const data = [
     price: 12000,
     stock: 15,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -20,7 +20,7 @@ const data = [
     price: 14000,
     stock: 20,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado ligero",
   },
   {
@@ -31,7 +31,7 @@ const data = [
     price: 12000,
     stock: 15,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado ligero",
   },
   {
@@ -43,7 +43,7 @@ const data = [
     price: 9500,
     stock: 20,
     typeOfCoffee: "Café molido",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -55,7 +55,7 @@ const data = [
     price: 12000,
     stock: 15,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado ligero",
   },
   {
@@ -66,7 +66,7 @@ const data = [
     price: 10500,
     stock: 20,
     typeOfCoffee: "Café molido",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -78,7 +78,7 @@ const data = [
     price: 9000,
     stock: 18,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -90,7 +90,7 @@ const data = [
     price: 13500,
     stock: 12,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado oscuro",
   },
   {
@@ -102,7 +102,7 @@ const data = [
     price: 13000,
     stock: 8,
     typeOfCoffee: "Café molido",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado ligero",
   },
   {
@@ -126,7 +126,7 @@ const data = [
     price: 11500,
     stock: 14,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -150,7 +150,7 @@ const data = [
     price: 11000,
     stock: 9,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado ligero",
   },
   {
@@ -174,7 +174,7 @@ const data = [
     price: 13000,
     stock: 10,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado ligero",
   },
   {
@@ -198,7 +198,7 @@ const data = [
     price: 12000,
     stock: 20,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -210,7 +210,7 @@ const data = [
     price: 11000,
     stock: 25,
     typeOfCoffee: "Café instantáneo",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado oscuro",
   },
   {
@@ -222,7 +222,7 @@ const data = [
     price: 12500,
     stock: 20,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -240,13 +240,13 @@ const data = [
   {
     name: "Cielo Estrellado",
     description:
-      "Deleita tus sentidos con el sabor celestial de este Café de origen Único con notas frutales.",
+      "Deleita tus sentidos con el sabor celestial de este Café de origen único con notas frutales.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 14000,
     stock: 16,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -258,7 +258,7 @@ const data = [
     price: 13000,
     stock: 14,
     typeOfCoffee: "Café molido",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado oscuro",
   },
   {
@@ -270,7 +270,7 @@ const data = [
     price: 14000,
     stock: 16,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -282,7 +282,7 @@ const data = [
     price: 13000,
     stock: 14,
     typeOfCoffee: "Café molido",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado oscuro",
   },
   {
@@ -330,19 +330,19 @@ const data = [
     price: 13000,
     stock: 14,
     typeOfCoffee: "Café molido",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado oscuro",
   },
   {
     name: "Café Exótico Bali",
     description:
-      "Viaja a Bali a través de los sabores exóticos y únicos de este Café de origen Único.",
+      "Viaja a Bali a través de los sabores exóticos y únicos de este Café de origen único.",
     image:
       "https://i.pinimg.com/564x/d8/92/f1/d892f19e758c315b4a6539fb1bd10945.jpg",
     price: 14000,
     stock: 16,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -354,7 +354,7 @@ const data = [
     price: 15000,
     stock: 20,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -390,7 +390,7 @@ const data = [
     price: 11500,
     stock: 14,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado ligero",
   },
   {
@@ -402,7 +402,7 @@ const data = [
     price: 12000,
     stock: 15,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   // 10
@@ -415,7 +415,7 @@ const data = [
     price: 15500,
     stock: 22,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -451,7 +451,7 @@ const data = [
     price: 16000,
     stock: 16,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -463,7 +463,7 @@ const data = [
     price: 15200,
     stock: 14,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -475,7 +475,7 @@ const data = [
     price: 14000,
     stock: 15,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado ligero",
   },
   // 10
@@ -488,7 +488,7 @@ const data = [
     price: 14800,
     stock: 12,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado oscuro",
   },
   {
@@ -512,7 +512,7 @@ const data = [
     price: 13000,
     stock: 18,
     typeOfCoffee: "Café en grano entero",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado medio",
   },
   {
@@ -524,7 +524,7 @@ const data = [
     price: 13800,
     stock: 16,
     typeOfCoffee: "Café en cápsulas",
-    origin: "Café de origen Único",
+    origin: "Café de origen único",
     roastingProfile: "Tostado ligero",
   },
 ];
