@@ -12,7 +12,7 @@ export const validateId = [
 //   query("typeOfCoffee").optional().isIn([1, 2, 3]),
 //   query("origin").optional().isIn([1, 2]),
 //   query("roastingProfile").optional().isIn([1, 2, 3]),
-//   query("name").optional().trim().escape(),
+//   query("name").optional().trim().notEmpty().escape(),
 //   (req, res, next) => {
 //     validate(req, res, next);
 //   },
