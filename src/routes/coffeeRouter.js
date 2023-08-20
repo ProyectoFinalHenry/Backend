@@ -10,7 +10,6 @@ import {
 } from "../handlers/handlerCoffee.js";
 import {
   validateId,
-  validateQuery,
   validatePost,
   validatePut,
 } from "../middlewares/coffee.js";
@@ -18,7 +17,7 @@ import {
 const coffeeRouter = Router();
 
 coffeeRouter
-  .get("/", validateQuery, getCoffees)
+  .get("/", getCoffees)
   .get("/:id", validateId, getCoffeeById)
   .post("/", validatePost, postCoffee)
   .post("/upload", postUploadCoffeAsset)
