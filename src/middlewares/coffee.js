@@ -1,4 +1,4 @@
-import { query, body, param } from "express-validator";
+import { body, param } from "express-validator";
 import validate from "../utils/validateResults.js";
 
 export const validateId = [
@@ -8,15 +8,15 @@ export const validateId = [
   },
 ];
 
-export const validateQuery = [
-  query("typeOfCoffee").optional().isIn([1, 2, 3]),
-  query("origin").optional().isIn([1, 2]),
-  query("roastingProfile").optional().isIn([1, 2, 3]),
-  query("name").optional().trim().notEmpty().escape(),
-  (req, res, next) => {
-    validate(req, res, next);
-  },
-];
+// export const validateQuery = [
+//   query("typeOfCoffee").optional().isIn([1, 2, 3]),
+//   query("origin").optional().isIn([1, 2]),
+//   query("roastingProfile").optional().isIn([1, 2, 3]),
+//   query("name").optional().trim().escape(),
+//   (req, res, next) => {
+//     validate(req, res, next);
+//   },
+// ];
 
 export const validatePost = [
   body("name")
