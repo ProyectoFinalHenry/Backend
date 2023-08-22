@@ -114,7 +114,8 @@ export const post = async (coffeeData) => {
   await coffee.setOrigin(currentOrigin[0]);
 
   return {
-    status: "Creado con éxito :D",
+    status: true,
+    message: "Creado con éxito :D"
   };
 };
 
