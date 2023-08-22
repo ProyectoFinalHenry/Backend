@@ -4,7 +4,7 @@ const data = [
     description:
       "Un café de Tostado medio equilibrado y sabroso de las colinas de Colombia.",
     image:
-      "https://www.starbucksathome.com/pe/sites/default/files/2021-06/UY_uy_SBUXWebsite_LongShadow_Bag_1842%E2%80%8A%C3%971542px_210414_Pike_M_2_2-2.png",
+      "https://w7.pngwing.com/pngs/868/160/png-transparent-instant-coffee-espresso-coffee-bag-tea-bag-coffee-food-tea-coffee-thumbnail.png",
     price: 12000,
     stock: 5,
     typeOfCoffee: "Café en grano entero",
@@ -196,7 +196,7 @@ const data = [
     image:
       "https://www.starbucksathome.com/pe/sites/default/files/2021-06/UY_uy_SBUXWebsite_LongShadow_Bag_1842%E2%80%8A%C3%971542px_210414_Pike_M_2_2-2.png",
     price: 12000,
-    stock: 20,
+    stock: 1,
     typeOfCoffee: "Café en cápsula",
     origin: "Café de origen único",
     roastingProfile: "Tostado medio",
@@ -232,7 +232,7 @@ const data = [
     image:
       "https://www.starbucksathome.com/pe/sites/default/files/2021-06/UY_uy_SBUXWebsite_LongShadow_Bag_1842%E2%80%8A%C3%971542px_210414_Pike_M_2_2-2.png",
     price: 13500,
-    stock: 18,
+    stock: 4,
     typeOfCoffee: "Café molido",
     origin: "Mezcla de Café",
     roastingProfile: "Tostado ligero",
@@ -280,7 +280,7 @@ const data = [
     image:
       "https://www.cafedumonde.co.uk/media/1085/showcase-coffe-packs.png?center=0.509090909090909,0.46402877697841727&mode=crop&heightratio=1&width=940&rnd=132331702180000000",
     price: 13000,
-    stock: 14,
+    stock: 3,
     typeOfCoffee: "Café molido",
     origin: "Café de origen único",
     roastingProfile: "Tostado oscuro",
@@ -328,7 +328,7 @@ const data = [
     image:
       "https://www.starbucksathome.com/pe/sites/default/files/2021-06/UY_uy_SBUXWebsite_LongShadow_Bag_1842%E2%80%8A%C3%971542px_210414_Pike_M_2_2-2.png",
     price: 13000,
-    stock: 14,
+    stock: 3,
     typeOfCoffee: "Café molido",
     origin: "Café de origen único",
     roastingProfile: "Tostado oscuro",
@@ -376,7 +376,7 @@ const data = [
     image:
       "https://www.starbucksathome.com/pe/sites/default/files/2021-06/UY_uy_SBUXWebsite_LongShadow_Bag_1842%E2%80%8A%C3%971542px_210414_Pike_M_2_2-2.png",
     price: 9500,
-    stock: 25,
+    stock: 1,
     typeOfCoffee: "Café molido",
     origin: "Mezcla de Café",
     roastingProfile: "Tostado medio",
@@ -449,7 +449,7 @@ const data = [
     image:
       "https://www.starbucksathome.com/pe/sites/default/files/2021-06/UY_uy_SBUXWebsite_LongShadow_Bag_1842%E2%80%8A%C3%971542px_210414_Pike_M_2_2-2.png",
     price: 16000,
-    stock: 16,
+    stock: 5,
     typeOfCoffee: "Café en cápsula",
     origin: "Café de origen único",
     roastingProfile: "Tostado medio",
@@ -498,7 +498,7 @@ const data = [
     image:
       "https://www.starbucksathome.com/pe/sites/default/files/2021-06/UY_uy_SBUXWebsite_LongShadow_Bag_1842%E2%80%8A%C3%971542px_210414_Pike_M_2_2-2.png",
     price: 12500,
-    stock: 20,
+    stock: 5,
     typeOfCoffee: "Café molido",
     origin: "Mezcla de Café",
     roastingProfile: "Tostado medio",
@@ -522,10 +522,32 @@ const data = [
     image:
       "https://www.starbucksathome.com/pe/sites/default/files/2021-06/UY_uy_SBUXWebsite_LongShadow_Bag_1842%E2%80%8A%C3%971542px_210414_Pike_M_2_2-2.png",
     price: 13800,
-    stock: 16,
+    stock: 3,
     typeOfCoffee: "Café en cápsula",
     origin: "Café de origen único",
     roastingProfile: "Tostado ligero",
   },
 ];
+
+const images = [
+  'https://i.postimg.cc/fbqSjsV0/1000-F-239524385-d7-Pc-Bw7-Cn-Aov-Hj-RJtz-Dr-UNk-RBBjaiz2-B-clipdrop-background-removal.png',
+  'https://i.postimg.cc/2S21rYFX/1e25a80f-aea9-4007-bc53-fa2a09dc64e1-clipdrop-background-removal.webp',
+  'https://i.postimg.cc/NjgK3FTH/284-2843710-coffee-powder-pack-hd-png-download-clipdrop-background-removal.png',
+  'https://i.postimg.cc/VL9SZnSw/762-7627294-coffee-package-private-label-hd-png-download-clipdrop-background-removal.png',
+  'https://i.postimg.cc/TwZyFcqd/81-YXDv85-ILL-AC-UL210-SR210-210-clipdrop-background-removal.png',
+  'https://i.postimg.cc/RCHJfj4N/b1ce2f09-53a6-4e6c-abc8-e6c085263d9f-clipdrop-background-removal.webp',
+  'https://i.postimg.cc/WzgDvJXM/Boggle-Hole-Light-Background-clipdrop-background-removal.webp',
+  'https://i.postimg.cc/jdYwhZSv/istockphoto-962658860-612x612-clipdrop-background-removal.png',
+ ]
+
+
+ function assignRandomImages() {
+  data.forEach((item) => {
+    const randomIndex = Math.floor(Math.random() * images.length);
+    item.image = images[randomIndex];
+  });
+}
+
+assignRandomImages();
+
 export default data;
