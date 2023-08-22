@@ -23,10 +23,6 @@ export const validateSignup = [
     .exists({ values: "falsy" })
     .trim()
     .notEmpty()
-    .isLength({
-      min: 8,
-      max: 20,
-    })
     .escape(),
   body("image").optional().trim().notEmpty().isURL(),
   (req, res, next) => {
@@ -45,10 +41,6 @@ export const validateLogin = [
     .exists({ values: "falsy" })
     .trim()
     .notEmpty()
-    .isLength({
-      min: 8,
-      max: 20,
-    })
     .escape(),
   (req, res, next) => {
     validate(req, res, next);
