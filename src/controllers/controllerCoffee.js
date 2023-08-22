@@ -164,3 +164,16 @@ export const remove = async (id) => {
     status: "Eliminado con éxito :v",
   };
 };
+
+export const getAllTypes = async () => {
+  const types = await TypeOfCoffee.findAll();
+  return types;
+}
+export const getAllOrigins = async () => {
+  const origin = await Origin.findAll();
+  return origin;
+}
+export const getAllRoasts = async () => {
+  const roasts = await RoastingProfile.findAll();
+  return roasts;
+}

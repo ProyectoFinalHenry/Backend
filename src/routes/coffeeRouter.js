@@ -6,6 +6,9 @@ import {
   postUploadCoffeAsset,
   updateCoffee,
   deleteCoffee,
+  getTypesOfCoffee,
+  getOriginsOfCoffee,
+  getRoastProfileOfCoffee
 } from "../handlers/handlerCoffee.js";
 import {
   validateQuery,
@@ -18,6 +21,9 @@ const coffeeRouter = Router();
 
 coffeeRouter
   .get("/", validateQuery, getCoffees)
+  .get("/types", getTypesOfCoffee)
+  .get("/roasts", getRoastProfileOfCoffee)
+  .get("/origins", getOriginsOfCoffee)
   .get("/:id", validateId, getCoffeeById)
   .post("/", validatePost, postCoffee)
   .post("/upload", postUploadCoffeAsset)
