@@ -1,4 +1,4 @@
-import { body, cookie } from "express-validator";
+import { body, param, header } from "express-validator";
 import validate from "../utils/validateResults.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -19,11 +19,7 @@ export const validateSignup = [
     .notEmpty()
     .isEmail()
     .escape(),
-  body("password")
-    .exists({ values: "falsy" })
-    .trim()
-    .notEmpty()
-    .escape(),
+  body("password").exists({ values: "falsy" }).trim().notEmpty().escape(),
   body("image").optional().trim().notEmpty().isURL(),
   (req, res, next) => {
     validate(req, res, next);
@@ -37,10 +33,25 @@ export const validateLogin = [
     .notEmpty()
     .isEmail()
     .escape(),
-  body("password")
+  body("password").exists({ values: "falsy" }).trim().notEmpty().escape(),
+  (req, res, next) => {
+    validate(req, res, next);
+  },
+];
+
+export const validateId = [
+  param("id").trim().notEmpty().isUUID("4"),
+  (req, res, next) => {
+    validate(req, res, next);
+  },
+];
+
+export const validateEmail = [
+  body("email")
     .exists({ values: "falsy" })
     .trim()
     .notEmpty()
+    .isEmail()
     .escape(),
   (req, res, next) => {
     validate(req, res, next);
@@ -48,7 +59,7 @@ export const validateLogin = [
 ];
 
 export const validateUser = [
-  cookie("Authorization")
+  header("auth_token")
     .exists({ values: "falsy" })
     .trim()
     .notEmpty()
@@ -69,14 +80,22 @@ export const validateUser = [
 
 export const validateUpdate = [
   body("id").not().exists(),
-  body("password").not().exists(),
   body("isActive").not().exists(),
+  body("validated").not().exists(),
   body("name").optional().isAlphanumeric().notEmpty().isLength({
     min: 2,
     max: 20,
   }),
   body("email").optional().trim().notEmpty().isEmail().escape(),
   body("image").optional().trim().notEmpty().isURL(),
+  (req, res, next) => {
+    validate(req, res, next);
+  },
+];
+
+export const validateResetPassword = [
+  body("token").exists({ values: "falsy" }).trim().notEmpty(),
+  body("newPassword").exists({ values: "falsy" }).trim().notEmpty().escape(),
   (req, res, next) => {
     validate(req, res, next);
   },
