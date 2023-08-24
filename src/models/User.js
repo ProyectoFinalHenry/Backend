@@ -15,11 +15,11 @@ export default function (sequelize) {
         validate: {
           len: {
             args: [2, 20],
-            msg: "El nombre debe contener entre 2 y 20 caracteres"
+            msg: "El nombre debe contener entre 2 y 20 caracteres",
           },
           isAlphanumeric: {
             args: true,
-            msg: "El nombre no admite caracteres especiales"
+            msg: "El nombre no admite caracteres especiales",
           },
         },
       },
@@ -43,9 +43,16 @@ export default function (sequelize) {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      validated: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
       isActive: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
+      },
+      resetToken: {
+        type: DataTypes.STRING,
       },
     },
     { timestamps: false }

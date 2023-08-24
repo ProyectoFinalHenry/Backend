@@ -2,6 +2,8 @@ import sequelize from "../db.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
+import { sendEmailToUsers } from "../emails/resend.js";
+import { registration, resetPassword } from "../emails/templates.js";
 const { User, Order, Detail, Coffee } = sequelize.models;
 dotenv.config();
 
@@ -21,6 +23,8 @@ export const newUser = async ({ name, email, password, image }) => {
   });
   if (!created) throw new Error("Este usuario ya existe");
 
+  await sendEmailToUsers(email, registration(name, id));
+
   const token = jwt.sign({ id, role }, process.env.SECRET_KEY, {
     expiresIn: "12h",
   });
@@ -33,9 +37,9 @@ export const authentication = async ({ email, password }) => {
   if (!user) throw new Error("Email o contraseña incorrecta");
 
   const isValidPassword = await bcrypt.compare(password, user.password);
-
   if (!isValidPassword) throw new Error("Email o contraseña incorrecta");
-  if (user.isActive === false) throw new Error("Este usuario tiene el acceso restringido");
+  if (!user.isActive)
+    throw new Error("Este usuario tiene el acceso restringido");
 
   const token = jwt.sign(
     { id: user.id, role: user.role },
@@ -48,8 +52,50 @@ export const authentication = async ({ email, password }) => {
   return token;
 };
 
+export const validationEmail = async ({ email }) => {
+  const { id, name } = await User.findOne({ where: { email } });
+  await sendEmailToUsers(email, registration(name, id));
+
+  return {
+    status: "Email enviado con exito",
+  };
+};
+
+export const passwordResetEmail = async ({ email }) => {
+  const user = await User.findOne({ where: { email } });
+
+  const hashedToken = await bcrypt.hash(user.id, 8);
+  await user.update({ resetToken: hashedToken });
+  await sendEmailToUsers(email, resetPassword(user.name, hashedToken));
+
+  return {
+    status: "Email enviado con exito",
+  };
+};
+
+export const validator = async ({ id }) => {
+  await User.update({ validated: true }, { where: { id } });
+
+  return {
+    status: "Email validado con exito",
+  };
+};
+
+export const passwordReset = async ({ token, newPassword }) => {
+  const user = await User.findOne({ where: { resetToken: token } });
+  if (!user) throw new Error("El token proporcionado es invalido");
+
+  const passwordHashed = await bcrypt.hash(newPassword, 8);
+  await user.update({ password: passwordHashed, resetToken: null });
+
+  return {
+    status: "Contraseña reestablecida",
+  };
+};
+
 export const getData = async (id) => {
   const user = await User.findByPk(id, {
+    attributes: { exclude: ["resetToken"] },
     include: [
       {
         model: Order,
