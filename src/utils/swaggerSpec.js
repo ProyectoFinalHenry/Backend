@@ -10,12 +10,12 @@ const spec = {
     },
     servers: [
       {
-        url: "https://backend-mniu.onrender.com/"
+        url: "https://backend-mniu.onrender.com/",
       },
       {
-        url: "http://localhost:3001/"
-      }
-    ]
+        url: "http://localhost:3001/",
+      },
+    ],
   },
   apis: ["./src/docs/*.js"],
 };
