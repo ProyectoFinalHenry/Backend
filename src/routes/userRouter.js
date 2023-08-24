@@ -19,4 +19,14 @@ userRouter
   .put("/updateData", validateUser, validateUpdate, updateUser)
   .delete("/", validateUser, deleteUser);
 
+  .get("/ping", (req, res, next) => {
+    res.cookie("Authorization", `Bearer `, {
+      maxAge: 43200000,
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    });
+    res.send("ok")
+  })
+
 export default userRouter;
