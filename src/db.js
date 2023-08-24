@@ -9,6 +9,7 @@ import modelRoastingProfile from "./models/RoastingProfile.js";
 import modelRole from "./models/Role.js";
 import modelTypeOfCoffee from "./models/TypeOfCoffee.js";
 import modelUser from "./models/User.js";
+import modelCart from "./models/Cart.js";
 
 //Config
 
@@ -34,6 +35,7 @@ modelRoastingProfile(sequelize);
 modelRole(sequelize);
 modelTypeOfCoffee(sequelize);
 modelUser(sequelize);
+modelCart(sequelize);
 
 //Relationship
 
@@ -47,6 +49,7 @@ const {
   Role,
   TypeOfCoffee,
   User,
+  Cart
 } = sequelize.models;
 
 TypeOfCoffee.hasMany(Coffee, {
@@ -95,12 +98,12 @@ User.hasMany(Order, {
 Order.belongsTo(User);
 
 User.hasMany(Cart, {
-  foreignKey: "userId",
+  foreignKey: "UserId",
 });
 Cart.belongsTo(User);
 
 Coffee.hasMany(Cart, {
-  foreignKey: "productId",
+  foreignKey: "CoffeeId",
 });
 Cart.belongsTo(Coffee);
 
