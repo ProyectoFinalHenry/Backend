@@ -17,7 +17,7 @@ userRouter
   .post("/signup", validateSignup, signup)
   .post("/login", validateLogin, login)
   .put("/updateData", validateUser, validateUpdate, updateUser)
-  .delete("/", validateUser, deleteUser);
+  .delete("/", validateUser, deleteUser)
 
   .get("/ping", (req, res, next) => {
     res.cookie("Authorization", `Bearer `, {
