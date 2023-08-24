@@ -9,7 +9,7 @@ const PORT = process.env.SERVER_PORT || 3001;
 sequelize.sync({ force: true }).then(async () => {
   await seedCoffee(sequelize);
 
-  server.listen(PORT, async () => {
+  server.listen(PORT, () => {
     console.log(`listening at ${PORT}`);
   });
 });
