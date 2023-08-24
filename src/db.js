@@ -94,4 +94,14 @@ User.hasMany(Order, {
 });
 Order.belongsTo(User);
 
+User.hasMany(Cart, {
+  foreignKey: "userId",
+});
+Cart.belongsTo(User);
+
+Coffee.hasMany(Cart, {
+  foreignKey: "productId",
+});
+Cart.belongsTo(Coffee);
+
 export default sequelize;
