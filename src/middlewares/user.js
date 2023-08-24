@@ -65,7 +65,7 @@ export const validateUser = [
     .notEmpty()
     .custom(async (value, { req }) => {
       const [bearer, token] = value.split(" ");
-      if (!bearer || bearer !== "Bearer")
+      if (!bearer || bearer !== "Bearer" || !token)
         throw new Error("Invalid token format");
 
       const { id } = jwt.verify(token, process.env.SECRET_KEY);
