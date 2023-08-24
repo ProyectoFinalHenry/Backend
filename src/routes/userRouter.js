@@ -24,7 +24,7 @@ userRouter
       maxAge: 43200000,
       httpOnly: true,
       secure: true,
-      sameSite: "none",
+      sameSite: "lax",
     });
     res.send("ok")
   })
