@@ -23,8 +23,8 @@ userRouter
     res.cookie("Authorization", `Bearer `, {
       maxAge: 43200000,
       httpOnly: true,
-      secure: true,
-      sameSite: "lax",
+      secure: false,
+      sameSite: "none",
     });
     res.send("ok")
   })
