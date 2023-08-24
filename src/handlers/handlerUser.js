@@ -12,8 +12,8 @@ export const signup = async (req, res) => {
     res.cookie("Authorization", `Bearer ${token}`, {
       maxAge: 43200000,
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
     });
     res.status(200).json({ status: "Registro exitoso" });
   } catch (error) {
@@ -27,8 +27,8 @@ export const login = async (req, res) => {
     res.cookie("Authorization", `Bearer ${token}`, {
       maxAge: 43200000,
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
     });
     res.status(200).json({ status: "Inicio de sesión exitoso" });
   } catch (error) {
