@@ -5,7 +5,7 @@ export const createOrder = async (req, res) => {
 
 
   mercadopago.configure({
-    access_token: "",
+    access_token: import.meta.env.MP_ACCESS_TOKEN,
   });
 };
 
