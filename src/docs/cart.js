@@ -144,8 +144,15 @@
  * /cart/delete:
  *  delete:
  *    summary: Elimina un producto del carrito.
- *    description: Necesita que le pasen por body la prop "coffeeId" con el id del producto.
+ *    description: Necesita que le pasen por body la prop "coffeeId" con el id del producto y por header el token "auth_token".
  *    tags: [Cart]
+ *    parameters:
+ *      - in: header
+ *        name: auth_token
+ *        description: Token de autorización
+ *        required: true
+ *        schema:
+ *          type: string
  *    requestBody:
  *      required: true
  *      content:
