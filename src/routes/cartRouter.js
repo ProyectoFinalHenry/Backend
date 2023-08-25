@@ -14,6 +14,6 @@ const cartRouter = Router();
 cartRouter
   .get("/", validateToken, getProductsToCart)
   .post("/add", validateToken, validateAdd, addProductToCart)
-  .delete("/delete", validateDelete, deleteProductToCart);
+  .delete("/delete", validateToken, validateDelete, deleteProductToCart);
 
 export default cartRouter;
