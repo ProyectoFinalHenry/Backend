@@ -2,7 +2,7 @@ import sequelize from "../db.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
-import { sendEmailToUsers } from "../emails/resend.js";
+import { transporterUser } from "../emails/mailer.js";
 import { registration, resetPassword } from "../emails/templates.js";
 const { User, Order, Detail, Coffee } = sequelize.models;
 dotenv.config();
@@ -23,7 +23,14 @@ export const newUser = async ({ name, email, password, image }) => {
   });
   if (!created) throw new Error("Este usuario ya existe");
 
-  await sendEmailToUsers(email, registration(name, id));
+  transporterUser.sendMail(
+    registration(email, name, id),
+    function (error, info) {
+      if (error) return console.log(error);
+
+      console.log("Message sent: " + info.response);
+    }
+  );
 
   const token = jwt.sign({ id, role }, process.env.SECRET_KEY, {
     expiresIn: "12h",
@@ -54,8 +61,14 @@ export const authentication = async ({ email, password }) => {
 
 export const validationEmail = async ({ email }) => {
   const { id, name } = await User.findOne({ where: { email } });
-  await sendEmailToUsers(email, registration(name, id));
+  transporterUser.sendMail(
+    registration(email, name, id),
+    function (error, info) {
+      if (error) return console.log(error);
 
+      console.log("Message sent: " + info.response);
+    }
+  );
   return {
     status: "Email enviado con exito",
   };
@@ -66,7 +79,15 @@ export const passwordResetEmail = async ({ email }) => {
 
   const hashedToken = await bcrypt.hash(user.id, 8);
   await user.update({ resetToken: hashedToken });
-  await sendEmailToUsers(email, resetPassword(user.name, hashedToken));
+
+  transporterUser.sendMail(
+    resetPassword(email, user.name, hashedToken),
+    function (error, info) {
+      if (error) return console.log(error);
+
+      console.log("Message sent: " + info.response);
+    }
+  );
 
   return {
     status: "Email enviado con exito",
