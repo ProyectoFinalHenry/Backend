@@ -9,14 +9,6 @@ export default function (sequelize) {
         primaryKey: true,
         autoIncrement: true,
       },
-      user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: "User",
-          key: "id",
-        },
-      },
       transaction_date: {
         type: DataTypes.DATE,
         allowNull: false,
