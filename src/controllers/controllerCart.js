@@ -19,8 +19,8 @@ export const addProduct = async (userId, { coffeeId, quantity }) => {
   };
 };
 
-export const deleteProduct = async ({ coffeeId }) => {
-  const cart = await Cart.findOne({ where: { CoffeeId: coffeeId } });
+export const deleteProduct = async (userId, { coffeeId }) => {
+  const cart = await Cart.findOne({ where: { UserId: userId, CoffeeId: coffeeId } });
   if (!cart) throw new Error("El producto no se encontró en el carrito");
 
   await cart.destroy();
@@ -43,7 +43,7 @@ export const getProducts = async (id) => {
       exclude: ["UserId", "CoffeeId"],
     },
   });
-  if (!cart) throw new Error("El carrito esta vacio");
+  if (!cart.length) throw new Error("El carrito esta vacio");
 
   return cart;
 };
