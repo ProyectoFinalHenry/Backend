@@ -31,16 +31,6 @@ userRouter
   .post("/send/restorePassword", validateEmail, resendPasswordResetEmail)
   .post("/resetPassword", validateResetPassword, resetPassword)
   .put("/updateData", validateUser, validateUpdate, updateUser)
-  .delete("/", validateUser, deleteUser)
-
-  .get("/ping", (req, res, next) => {
-    res.cookie("Authorization", `Bearer `, {
-      maxAge: 43200000,
-      httpOnly: true,
-      secure: false,
-      sameSite: "none",
-    });
-    res.send("ok")
-  })
+  .delete("/", validateUser, deleteUser);
 
 export default userRouter;
