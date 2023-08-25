@@ -31,6 +31,6 @@ userRouter
   .post("/send/restorePassword", validateEmail, resendPasswordResetEmail)
   .post("/resetPassword", validateResetPassword, resetPassword)
   .put("/updateData", validateUser, validateUpdate, updateUser)
-  .delete("/", validateUser, deleteUser)
+  .delete("/", validateUser, deleteUser);
 
 export default userRouter;
