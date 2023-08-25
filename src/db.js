@@ -9,11 +9,8 @@ import modelRoastingProfile from "./models/RoastingProfile.js";
 import modelRole from "./models/Role.js";
 import modelTypeOfCoffee from "./models/TypeOfCoffee.js";
 import modelUser from "./models/User.js";
-<<<<<<< Updated upstream
 import modelCart from "./models/Cart.js";
-=======
 import modelTransaction from "./models/Transaction.js"
->>>>>>> Stashed changes
 
 //Config
 
@@ -39,11 +36,8 @@ modelRoastingProfile(sequelize);
 modelRole(sequelize);
 modelTypeOfCoffee(sequelize);
 modelUser(sequelize);
-<<<<<<< Updated upstream
 modelCart(sequelize);
-=======
 modelTransaction(sequelize)
->>>>>>> Stashed changes
 
 //Relationship
 
@@ -57,11 +51,8 @@ const {
   Role,
   TypeOfCoffee,
   User,
-<<<<<<< Updated upstream
-  Cart
-=======
+  Cart,
   Transaction,
->>>>>>> Stashed changes
 } = sequelize.models;
 
 TypeOfCoffee.hasMany(Coffee, {
