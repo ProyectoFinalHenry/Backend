@@ -4,6 +4,7 @@ import coffeeRouter from "./coffeeRouter.js";
 import categoryRouter from "./categoryRouter.js";
 import userRouter from "./userRouter.js";
 import cartRouter from "./cartRouter.js";
+import reviewRouter from "./reviewRouter.js";
 import swaggerSpec from "../utils/swaggerSpec.js";
 
 const router = Router();
@@ -11,7 +12,8 @@ const router = Router();
 router.use("/coffee", coffeeRouter);
 router.use("/category", categoryRouter);
 router.use("/user", userRouter);
-router.use("/cart", cartRouter)
+router.use("/cart", cartRouter);
+router.use("/review", reviewRouter);
 router.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 export default router;
