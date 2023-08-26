@@ -1,12 +1,24 @@
 import axios from "axios";
+import { getProductsById } from "./controllerCoffee.js";
 
 export const createOrder = async (req, res) => {
+  const { products, user_id } = req.body;
 
-  // const { Users, Products, Orders, Details } = require("../db");
+  try {
+    const object = await getProductsById(products.map((e)=>e.id))
+    console.log("object :>>", object);
+    res.send(ok)    
+  } catch (error) {
+    res.send(error)
+  }
+};
 
+export const createTransaction = (product) => {
+  const products = []
+  products?.forEach((element) => {
 
-  //   // const user = await Users.findOne({ where: { id } });
-  res.send("creating order");
+    products.push()
+  });
 };
 
 //   // let productIds = [];
@@ -37,12 +49,12 @@ export const createOrder = async (req, res) => {
 //   //     `Sorry, the wines ${wineNames.join(", ")} are not available`
 //   //   );
 //   // }
-//   // //-------------Aqui se crea la orden en la db
-//   // const order = await Orders.create({
-//   //   date: new Date(),
-//   //   status: "Pending",
-//   //   totalPrice: total,
-//   // });
+//-------------Aqui se crea la orden en la db
+// const order = await Order.create({
+//   date: new Date(),
+//   status: "Pending",
+//   totalPrice: total,
+// });
 //   // //-------------Aqui se configura la orden de MP
 //   // let preference = {
 //   //   items,
@@ -113,27 +125,27 @@ export const createOrder = async (req, res) => {
 //   }
 // };
 
-// const getAllOrders = async () => {
-//   const orders = await Orders.findAll({
-//     include: [
-//       {
-//         model: Users,
-//         attributes: ["id", "name", "email"],
-//       },
-//       {
-//         model: Details,
-//         attributes: ["id", "quantity", "unitPrice"],
-//         include: [
-//           {
-//             model: Products,
-//             attributes: ["id", "name", "image"],
-//           },
-//         ],
-//       },
-//     ],
-//   });
-//   return orders;
-// };
+const getAllOrders = async () => {
+  const orders = await Order.findAll({
+    include: [
+      {
+        model: User,
+        attributes: ["id", "name", "email"],
+      },
+      {
+        model: Detail,
+        attributes: ["id", "quantity", "unitPrice"],
+        include: [
+          {
+            model: Products,
+            attributes: ["id", "name", "image"],
+          },
+        ],
+      },
+    ],
+  });
+  return orders;
+};
 
 // const getOrderById = async (token) => {
 //   const { id } = jwt.verify(token, process.env.SECRET_KEY);

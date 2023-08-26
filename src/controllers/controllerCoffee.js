@@ -46,7 +46,9 @@ export const getAll = async ({
 
   const dataDB = await Coffee.findAll(optionsDB);
   if (!dataDB.length)
-    throw new Error("Lo siento, no se encontraron cafés, solo tasas vacias :(, intente hacer otra búsqueda");
+    throw new Error(
+      "Lo siento, no se encontraron cafés, solo tasas vacias :(, intente hacer otra búsqueda"
+    );
 
   return dataDB;
 };
@@ -69,9 +71,7 @@ export const getById = async (id) => {
     },
   });
   if (!data)
-    throw new Error(
-      "No se encontró ese café, pero pronto prepararemos más ;)"
-    );
+    throw new Error("No se encontró ese café, pero pronto prepararemos más ;)");
 
   return data;
 };
@@ -115,7 +115,7 @@ export const post = async (coffeeData) => {
 
   return {
     status: true,
-    message: "Creado con éxito :D"
+    message: "Creado con éxito :D",
   };
 };
 
@@ -163,4 +163,16 @@ export const remove = async (id) => {
   return {
     status: "Eliminado con éxito :v",
   };
+};
+
+export const getProductsById = async (products) => {
+  console.log("products :>>", products);
+  const productsDB = await Coffee.findAll({
+    where: {
+      id: {
+        [Op.in]: products,
+      },
+    },
+  });
+  return productsDB;
 };
