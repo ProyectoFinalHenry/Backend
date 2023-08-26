@@ -1,8 +1,12 @@
+import dotenv from "dotenv"
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import router from "./routes/index.js";
+import "./mp.js"
+
+dotenv.config()
 
 const app = express();
 

@@ -1,35 +1,13 @@
-import mercadopago from "mercadopago";
 import axios from "axios";
 
 export const createOrder = async (req, res) => {
 
+  // const { Users, Products, Orders, Details } = require("../db");
 
-  mercadopago.configure({
-    access_token: import.meta.env.MP_ACCESS_TOKEN,
-  });
+
+  //   // const user = await Users.findOne({ where: { id } });
+  res.send("creating order");
 };
-
-const result = await mercadopago.preferences.create({
-  items: [
-    {
-      title: "Test",
-      quantity: 1,
-      currency_id: "ARS",
-      unit_price: 10.5,  
-    },
-  ],
-});
-console.log(result);
-
-res.send("creating order");
-
-// // require("dotenv").config();
-// const { Users, Products, Orders, Details } = require("../db");
-// // const config = require("./config");
-
-// export const createOrder = async () => {
-//   //  const { id } = jwt.verify(token, process.env.SECRET_KEY);
-//   // const user = await Users.findOne({ where: { id } });
 
 //   // let productIds = [];
 //   // let record = [];

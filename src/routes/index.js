@@ -5,15 +5,15 @@ import categoryRouter from "./categoryRouter.js";
 import userRouter from "./userRouter.js";
 import cartRouter from "./cartRouter.js";
 import swaggerSpec from "../utils/swaggerSpec.js";
-// import paymentRouter from "../routes/paymentRouter.js"
+import paymentRouter from "../routes/paymentRouter.js";
 
 const router = Router();
 
 router.use("/coffee", coffeeRouter);
 router.use("/category", categoryRouter);
 router.use("/user", userRouter);
-router.use("/cart", cartRouter)
-// router.use("/payment", paymentRouter)
+router.use("/cart", cartRouter);
+router.use("/payment", paymentRouter);
 
 router.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
