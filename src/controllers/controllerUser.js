@@ -4,13 +4,13 @@ import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
 import { transporterUser } from "../emails/mailer.js";
 import { registration, resetPassword } from "../emails/templates.js";
-const { User, Order, Detail, Coffee } = sequelize.models;
+const { User, Order, Detail, Coffee, Role } = sequelize.models;
 dotenv.config();
 
 export const newUser = async ({ name, email, password, image }) => {
   const passwordHashed = await bcrypt.hash(password, 8);
 
-  const [{ id, role }, created] = await User.findOrCreate({
+  const [user, created] = await User.findOrCreate({
     where: { email },
     defaults: {
       name,
@@ -22,9 +22,11 @@ export const newUser = async ({ name, email, password, image }) => {
     },
   });
   if (!created) throw new Error("Este usuario ya existe");
+  const role = await Role.findOne({ where: { role: "user" } });
+  user.setRole(role);
 
   transporterUser.sendMail(
-    registration(email, name, id),
+    registration(email, name, user.id),
     function (error, info) {
       if (error) return console.log(error);
 
@@ -32,9 +34,13 @@ export const newUser = async ({ name, email, password, image }) => {
     }
   );
 
-  const token = jwt.sign({ id, role }, process.env.SECRET_KEY, {
-    expiresIn: "12h",
-  });
+  const token = jwt.sign(
+    { id: user.id, role: user.role },
+    process.env.SECRET_KEY,
+    {
+      expiresIn: "12h",
+    }
+  );
 
   return token;
 };
