@@ -29,8 +29,8 @@
  *                  Coffee:
  *                    type: object
  *                    properties:
-                        id:
-                          type: string
+ *                      id:
+ *                        type: string
  *                      name:
  *                        type: string
  *                      image:
