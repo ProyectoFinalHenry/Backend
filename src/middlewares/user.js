@@ -7,7 +7,7 @@ dotenv.config();
 export const validateSignup = [
   body("name")
     .exists({ values: "falsy" })
-    .isAlphanumeric()
+    .trim()
     .notEmpty()
     .isLength({
       min: 2,
