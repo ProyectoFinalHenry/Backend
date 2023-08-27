@@ -19,9 +19,9 @@ const coffeeRouter = Router();
 coffeeRouter
   .get("/", validateQuery, getCoffees)
   .get("/:id", validateId, getCoffeeById)
-  .post("/", validatePost, postCoffee)
+  .post("/", validatePost, postCoffee) //agregar validacion de admin
   .post("/upload", postUploadCoffeAsset)
-  .put("/:id", validateId, validatePut, updateCoffee)
-  .delete("/:id", validateId, deleteCoffee);
+  .put("/:id", validateId, validatePut, updateCoffee) //agregar validacion de admin
+  .delete("/:id", validateId, deleteCoffee); //agregar validacion de admin
 
 export default coffeeRouter;
