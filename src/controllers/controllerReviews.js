@@ -1,19 +1,20 @@
 import sequelize from "../db.js";
 const { User, Coffee, Review } = sequelize.models;
 
-export const add = async (userId, { coffeeId, comments, rating }) => {
+export const add = async (userId, { coffeeId, title, comments, rating }) => {
   const date = new Date();
   const [review, created] = await Review.findOrCreate({
     where: { UserId: userId, CoffeeId: coffeeId },
     defaults: {
       date,
       rating,
+      title,
       comments,
     },
   });
 
   if (!created) {
-    await review.update({ date, rating, comments });
+    await review.update({ date, rating, title, comments });
   } else {
     const [user, coffee] = await Promise.all([
       User.findByPk(userId),
