@@ -3,7 +3,7 @@
  * /review/add:
  *  post:
  *    summary: Agrega una reseña a un producto.
- *    description: Necesita que le envien por header el token "auth_token" y por body un obj con las props "coffeeId", "comments" y "rating". El endpoint se encargara de agregar la reseña al cafe y asociarla con un usuario.
+ *    description: Necesita que le envien por header el token "auth_token" y por body un obj con las props "coffeeId", "title", "comments" y "rating". El endpoint se encargara de agregar la reseña al cafe y asociarla con un usuario.
  *    tags: [Review]
  *    parameters:
  *      - in: header
@@ -20,6 +20,8 @@
  *            type: object
  *            properties:
  *              coffeeId:
+ *                type: string
+ *              title:
  *                type: string
  *              comments:
  *                type: string

@@ -31,6 +31,7 @@ export const validateCoffee = [
 ];
 
 export const validateReview = [
+  body("title").exists().trim().notEmpty().escape(),
   body("comments").exists().trim().notEmpty().escape(),
   body("rating").isInt({ min: 1, max: 5 }),
   (req, res, next) => {

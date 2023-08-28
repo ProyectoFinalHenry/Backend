@@ -13,6 +13,10 @@ export default function (sequelize) {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
       comments: {
         type: DataTypes.TEXT,
         allowNull: false,

@@ -16,11 +16,7 @@ export default function (sequelize) {
           len: {
             args: [2, 20],
             msg: "El nombre debe contener entre 2 y 20 caracteres",
-          },
-          isAlphanumeric: {
-            args: true,
-            msg: "El nombre no admite caracteres especiales",
-          },
+          }
         },
       },
       image: {

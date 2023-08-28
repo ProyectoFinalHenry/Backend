@@ -60,7 +60,7 @@ export const getById = async (id) => {
       { model: RoastingProfile, attributes: ["profile"] },
       {
         model: Review,
-        attributes: ["date", "rating", "comments"],
+        attributes: ["date", "title", "comments", "rating"],
         include: { model: User, attributes: ["name", "image"] },
       },
     ],
