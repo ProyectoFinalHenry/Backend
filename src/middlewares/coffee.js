@@ -9,7 +9,7 @@ export const validateId = [
 ];
 
 export const validateQuery = [
-  query("typeOfCoffee").optional().isIn([1, 2, 3]),
+  query("typeOfCoffee").optional().isIn([1, 2, 3, 4]),
   query("origin").optional().isIn([1, 2]),
   query("roastingProfile").optional().isIn([1, 2, 3]),
   query("name").optional().trim().notEmpty().escape(),
