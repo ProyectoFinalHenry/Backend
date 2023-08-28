@@ -66,9 +66,11 @@ export const authentication = async ({ email, password }) => {
 };
 
 export const validationEmail = async ({ email }) => {
-  const { id, name } = await User.findOne({ where: { email } });
+  const user = await User.findOne({ where: { email } });
+  if(!user) throw new Error("Este usuario no existe");
+  
   transporterUser.sendMail(
-    registration(email, name, id),
+    registration(email, user.name, user.id),
     function (error, info) {
       if (error) return console.log(error);
 
@@ -82,6 +84,7 @@ export const validationEmail = async ({ email }) => {
 
 export const passwordResetEmail = async ({ email }) => {
   const user = await User.findOne({ where: { email } });
+  if(!user) throw new Error("Este usuario no existe");
 
   const hashedToken = await bcrypt.hash(user.id, 8);
   await user.update({ resetToken: hashedToken });
@@ -122,8 +125,9 @@ export const passwordReset = async ({ token, newPassword }) => {
 
 export const getData = async (id) => {
   const user = await User.findByPk(id, {
-    attributes: { exclude: ["resetToken"] },
+    attributes: { exclude: ["resetToken", "password"] },
     include: [
+      {model: Role, attributes: ["role"]},
       {
         model: Order,
         attributes: ["date", "status", "totalPrice"],
