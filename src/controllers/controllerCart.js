@@ -39,7 +39,7 @@ export const getProducts = async (id) => {
   const cart = await Cart.findAll({
     where: { UserId: id },
     include: [
-      { model: Coffee, attributes: ["id", "name", "image", "price", "stock"] },
+      { model: Coffee, attributes: ["id", "name", "image", "price", "stock", "isActive"] },
     ],
     attributes: {
       exclude: ["UserId", "CoffeeId"],
