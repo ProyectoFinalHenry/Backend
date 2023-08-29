@@ -68,8 +68,7 @@ export const createOrder = async (id) => {
       failure: "https://granodeoro.vercel.app/products/page/1",
       pending: "https://granodeoro.vercel.app/products/page/1",
     },
-    notification_url:
-      "https://backend-mniu.onrender.com/payment/webhook",
+    notification_url: "https://backend-mniu.onrender.com/payment/webhook",
     metadata: {
       id: user.id,
       name: user.name,

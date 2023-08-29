@@ -30,7 +30,7 @@ export const newUser = async ({ name, email, password }) => {
   );
 
   const token = jwt.sign(
-    { id: user.id, role: user.role },
+    { id: user.id, role: user.RoleId },
     process.env.SECRET_KEY,
     {
       expiresIn: "12h",
@@ -50,7 +50,7 @@ export const authentication = async ({ email, password }) => {
     throw new Error("Este usuario tiene el acceso restringido");
 
   const token = jwt.sign(
-    { id: user.id, role: user.role },
+    { id: user.id, role: user.RoleId },
     process.env.SECRET_KEY,
     {
       expiresIn: "12h",
@@ -73,7 +73,7 @@ export const thirdPartyAuthentication = async ({ name, email, image }) => {
   if (created) {
     const role = await Role.findOne({ where: { role: "user" } });
     await user.setRole(role);
-    
+
     transporterUser.sendMail(
       registration(email, name, user.id),
       function (error, info) {
@@ -82,7 +82,7 @@ export const thirdPartyAuthentication = async ({ name, email, image }) => {
     );
   }
   const token = jwt.sign(
-    { id: user.id, role: user.role },
+    { id: user.id, role: user.RoleId },
     process.env.SECRET_KEY,
     {
       expiresIn: "12h",
