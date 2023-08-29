@@ -8,15 +8,20 @@ export const addProduct = async (userId, { coffeeId, quantity }) => {
       quantity,
     },
   });
-  if (!created && cart.quantity !== quantity) {
-    await cart.update({ quantity });
-  }
-  await cart.setCoffee(coffeeId);
-  await cart.setUser(userId);
+  if (created) {
+    await cart.setCoffee(coffeeId);
+    await cart.setUser(userId);
 
-  return {
-    status: "Producto agregado al carrito con éxito",
-  };
+    return {
+      status: "Producto agregado al carrito con éxito",
+    };
+  } else {
+    await cart.update({ quantity });
+
+    return {
+      status: "Cantidad del producto actualizado con éxito",
+    };
+  }
 };
 
 export const deleteProduct = async (userId, { coffeeId }) => {
@@ -39,7 +44,10 @@ export const getProducts = async (id) => {
   const cart = await Cart.findAll({
     where: { UserId: id },
     include: [
-      { model: Coffee, attributes: ["id", "name", "image", "price", "stock"] },
+      {
+        model: Coffee,
+        attributes: ["id", "name", "image", "price", "stock", "isActive"],
+      },
     ],
     attributes: {
       exclude: ["UserId", "CoffeeId"],

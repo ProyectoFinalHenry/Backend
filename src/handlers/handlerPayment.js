@@ -1,4 +1,7 @@
-import { createOrder, statusOrder } from "../controllers/controllerPayment.js";
+import {
+  createOrder,
+  completeOrder,
+} from "../controllers/controllerPayment.js";
 
 export const paymentService = async (req, res) => {
   try {
@@ -9,10 +12,10 @@ export const paymentService = async (req, res) => {
   }
 };
 
-const webhookService = async (req, res) => {
+export const webhook = async (req, res) => {
   try {
     if (req.body.type === "payment") {
-      await notificationOrder(req.body.data.id);
+      await completeOrder(req.body.data.id);
     }
     res.status(200).send("OK");
   } catch (error) {

@@ -40,6 +40,33 @@
  *                  type: array
  *                  items:
  *                    type: object
+ *                    properties:
+ *                      date:
+ *                        type: string
+ *                      status:
+ *                        type: string
+ *                      totalPrice:
+ *                        type: string
+ *                      Details:
+ *                        type: array
+ *                        items:
+ *                          type: object
+ *                          properties:
+ *                            quantity:
+ *                              type: integer
+ *                            unitPrice:
+ *                              type: string
+ *                            Coffee:
+ *                              type: object
+ *                              properties:
+ *                                name:
+ *                                  type: string
+ *                                description:
+ *                                  type: string
+ *                                image:
+ *                                  type: string
+ *                      
+ *                         
  *      403:
  *        description: FAIL
  *        content:
@@ -78,7 +105,7 @@
  * /user/signup:
  *  post:
  *    summary: Registra un usuario
- *    description: A partir de un obj con "name", "email", "password","image"(Opcional) registra un usuario en el sistema. Seguido envia un email de validacion y como respuesta un token de autorizacion. Recuerda que "name" solo acepta valores alphanumericos y entre 2 y 20 caracteres, y en caso de querer enviar "image"(opcional) debe ser una url
+ *    description: A partir de un obj con "name", "email", "password" registra un usuario en el sistema. Seguido envia un email de validacion y como respuesta un token de autorizacion.
  *    tags: [User]
  *    requestBody:
  *      required: true
@@ -92,6 +119,70 @@
  *              email:
  *                type: string
  *              password:
+ *                type: string
+ *    responses:
+ *      200:
+ *        description: OK
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                auth_token:
+ *                  type: string
+ *      403:
+ *        description: FAIL
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                errors:
+ *                  type: array
+ *                  items:
+ *                    type: object
+ *                    properties:
+ *                      type: 
+ *                        type: string
+ *                      value:
+ *                        type: string
+ *                      msg:
+ *                        type: string
+ *                      path:
+ *                        type: string
+ *                      location:
+ *                        type: string
+ *      500:
+ *        description: FAIL
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                error:
+ *                  type: string
+ *                
+ */
+
+/**
+ * @swagger
+ * /user/thirdAutentication:
+ *  post:
+ *    summary: Registra/Logea un usuario a traves de terceros
+ *    description: A partir de un obj con "name", "email","image" registra un usuario en el sistema. Seguido envia un email de validacion y como respuesta un token de autorizacion.
+ *    tags: [User]
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              name:
+ *                type: string
+ *              email:
+ *                type: string
+ *              image:
  *                type: string
  *    responses:
  *      200:

@@ -7,7 +7,7 @@ import { registration, resetPassword } from "../emails/templates.js";
 const { User, Order, Detail, Coffee, Role } = sequelize.models;
 dotenv.config();
 
-export const newUser = async ({ name, email, password, image }) => {
+export const newUser = async ({ name, email, password }) => {
   const passwordHashed = await bcrypt.hash(password, 8);
 
   const [user, created] = await User.findOrCreate({
@@ -16,26 +16,21 @@ export const newUser = async ({ name, email, password, image }) => {
       name,
       email,
       password: passwordHashed,
-      image:
-        image ||
-        "https://i.pinimg.com/564x/0e/6e/aa/0e6eaa94ab71d91b7d0f1dea83d49f61.jpg",
     },
   });
   if (!created) throw new Error("Este usuario ya existe");
   const role = await Role.findOne({ where: { role: "user" } });
-  user.setRole(role);
+  await user.setRole(role);
 
   transporterUser.sendMail(
     registration(email, name, user.id),
     function (error, info) {
-      if (error) return console.log(error);
-
-      console.log("Message sent: " + info.response);
+      if (error) console.log(error);
     }
   );
 
   const token = jwt.sign(
-    { id: user.id, role: user.role },
+    { id: user.id, role: user.RoleId },
     process.env.SECRET_KEY,
     {
       expiresIn: "12h",
@@ -55,7 +50,39 @@ export const authentication = async ({ email, password }) => {
     throw new Error("Este usuario tiene el acceso restringido");
 
   const token = jwt.sign(
-    { id: user.id, role: user.role },
+    { id: user.id, role: user.RoleId },
+    process.env.SECRET_KEY,
+    {
+      expiresIn: "12h",
+    }
+  );
+
+  return token;
+};
+
+export const thirdPartyAuthentication = async ({ name, email, image }) => {
+  const [user, created] = await User.findOrCreate({
+    where: { email },
+    defaults: {
+      name,
+      email,
+      image,
+      localRegistration: false,
+    },
+  });
+  if (created) {
+    const role = await Role.findOne({ where: { role: "user" } });
+    await user.setRole(role);
+
+    transporterUser.sendMail(
+      registration(email, name, user.id),
+      function (error, info) {
+        if (error) console.log(error);
+      }
+    );
+  }
+  const token = jwt.sign(
+    { id: user.id, role: user.RoleId },
     process.env.SECRET_KEY,
     {
       expiresIn: "12h",
@@ -67,14 +94,12 @@ export const authentication = async ({ email, password }) => {
 
 export const validationEmail = async ({ email }) => {
   const user = await User.findOne({ where: { email } });
-  if(!user) throw new Error("Este usuario no existe");
-  
+  if (!user) throw new Error("Este usuario no existe");
+
   transporterUser.sendMail(
     registration(email, user.name, user.id),
     function (error, info) {
-      if (error) return console.log(error);
-
-      console.log("Message sent: " + info.response);
+      if (error) console.log(error);
     }
   );
   return {
@@ -84,7 +109,7 @@ export const validationEmail = async ({ email }) => {
 
 export const passwordResetEmail = async ({ email }) => {
   const user = await User.findOne({ where: { email } });
-  if(!user) throw new Error("Este usuario no existe");
+  if (!user) throw new Error("Este usuario no existe");
 
   const hashedToken = await bcrypt.hash(user.id, 8);
   await user.update({ resetToken: hashedToken });
@@ -92,9 +117,7 @@ export const passwordResetEmail = async ({ email }) => {
   transporterUser.sendMail(
     resetPassword(email, user.name, hashedToken),
     function (error, info) {
-      if (error) return console.log(error);
-
-      console.log("Message sent: " + info.response);
+      if (error) console.log(error);
     }
   );
 
@@ -127,7 +150,7 @@ export const getData = async (id) => {
   const user = await User.findByPk(id, {
     attributes: { exclude: ["resetToken", "password"] },
     include: [
-      {model: Role, attributes: ["role"]},
+      { model: Role, attributes: ["role"] },
       {
         model: Order,
         attributes: ["date", "status", "totalPrice"],

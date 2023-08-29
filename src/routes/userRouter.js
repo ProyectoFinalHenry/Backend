@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   signup,
   login,
+  thirdAuthentication,
   resendValidationEmail,
   resendPasswordResetEmail,
   activator,
@@ -27,6 +28,7 @@ userRouter
   .get("/validate/:id", validateId, activator)
   .post("/signup", validateSignup, signup)
   .post("/login", validateLogin, login)
+  .post("/thirdAutentication", thirdAuthentication)
   .post("/send/validation", validateEmail, resendValidationEmail)
   .post("/send/restorePassword", validateEmail, resendPasswordResetEmail)
   .post("/resetPassword", validateResetPassword, resetPassword)

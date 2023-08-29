@@ -70,53 +70,61 @@ export const createOrder = async (id) => {
     },
     notification_url: "https://backend-mniu.onrender.com/payment/webhook",
     metadata: {
+      id: user.id,
       name: user.name,
       email: user.email,
       order_id: order.id,
     },
   };
   //Finalmente crea la orden de compra de MP--------------------------------
-  console.log(preferences);
   const response = await mercadopago.preferences.create(preferences);
   return response;
 };
 
-export const statusOrder = async (id) => { //EN TRABAJO
-  const { status, status_detail, metadata } = (
-    await axios(`https://api.mercadopago.com/v1/payments/${id}`, {
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${process.env.process.env.MP_TOKEN}`,
-      },
-    })
-  ).data;
+export const completeOrder = async (id) => {
+  const { status, status_detail, metadata } =
+    //Aquí se hace la peticion a mp de la compra
+    (
+      await axios(`https://api.mercadopago.com/v1/payments/${id}`, {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${process.env.MP_TOKEN}`,
+        },
+      })
+    ).data;
+
+  await Cart.destroy({ where: { UserId: metadata.id } }); //Se borra el contenido del carrito
 
   if (status === "approved" && status_detail === "accredited") {
+    //En caso de ser aprobado el pago se actualiza el stock, desactiva los productos con valor de 0, actualiza el status de la orden y envia un email de agradecimineto
     const order = await Order.findByPk(metadata.order_id, {
       include: [{ model: Detail, attributes: ["quantity", "CoffeeId"] }],
     });
-    // for (let detail of order) {
-    //   const coffee = await Coffee.findByPk(CoffeeId);
-    //   const stock = coffee.stock - quantity;
-    //   const updateData = {
-    //     stock,
-    //     isActive: stock > 0,
-    //   };
-    //   await coffee.update(updateData, { where: { id } });
-    // }
-    await order.update(
-      { status: "Approved" },
-      { where: { id: metadata.order_id } }
-    );
+
+    for (let detail of order.Details) {
+      console.log(detail);
+      const { quantity, CoffeeId } = detail;
+      const coffee = await Coffee.findByPk(CoffeeId);
+      const stock = coffee.stock - quantity;
+      const updateData = {
+        stock,
+        isActive: stock > 0,
+      };
+      await coffee.update(updateData);
+    }
+    await order.update({ status: "Approved" });
 
     //aqui va email de pago aprobado
   } else if (status === "rejected") {
+    //En caso de ser rechazado el pago se actualiza el status de la orden y se envia el correspodiente email
     await Order.update(
       { status: "Cancelled" },
       { where: { id: metadata.order_id } }
     );
+
     //aqui va email de pago rechazado
   } else if (status === "in_process") {
+    //En caso de estar pendiente el pago se envia el correspodiente email
     //aqui va email de pago pendiente
   }
 };

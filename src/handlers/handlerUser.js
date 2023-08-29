@@ -1,6 +1,7 @@
 import {
   newUser,
   authentication,
+  thirdPartyAuthentication,
   validationEmail,
   passwordResetEmail,
   validator,
@@ -27,6 +28,16 @@ export const login = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+export const thirdAuthentication = async (req, res) => {
+  try {
+    const token = await thirdPartyAuthentication(req.body);
+    res.status(200).json({ auth_token: `Bearer ${token}` })
+  } catch (error) {
+    res.status(500).json({ error: error.message})
+  }
+}
+
 
 export const resendValidationEmail = async (req, res) => {
   try {

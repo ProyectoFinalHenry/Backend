@@ -16,7 +16,7 @@ export default function (sequelize) {
           len: {
             args: [2, 20],
             msg: "El nombre debe contener entre 2 y 20 caracteres",
-          }
+          },
         },
       },
       image: {
@@ -37,7 +37,10 @@ export default function (sequelize) {
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false,
+      },
+      localRegistration: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
       },
       validated: {
         type: DataTypes.BOOLEAN,
