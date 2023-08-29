@@ -39,6 +39,8 @@
  *                        type: string
  *                      stock:
  *                        type: integer
+ *                      isActive:
+ *                        type: boolean
  *      403:
  *        description: FAIL
  *        content:
