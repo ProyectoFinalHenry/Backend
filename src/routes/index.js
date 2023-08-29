@@ -6,6 +6,7 @@ import userRouter from "./userRouter.js";
 import cartRouter from "./cartRouter.js";
 import reviewRouter from "./reviewRouter.js";
 import paymentRouter from "./paymentRouter.js";
+import adminRouter from "./adminRouter.js";
 import swaggerSpec from "../utils/swaggerSpec.js";
 
 const router = Router();
@@ -16,6 +17,7 @@ router.use("/user", userRouter);
 router.use("/cart", cartRouter);
 router.use("/review", reviewRouter);
 router.use("/payment", paymentRouter);
+router.use("/management", adminRouter);
 router.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 export default router;
