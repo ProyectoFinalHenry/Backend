@@ -161,7 +161,7 @@ export const getData = async (id) => {
             include: [
               {
                 model: Coffee,
-                attributes: ["name", "description", "image"],
+                attributes: ["id","name", "description", "image"],
               },
             ],
           },
