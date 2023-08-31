@@ -150,7 +150,8 @@ export const update = async (id, coffeeData) => {
     }
   }
   return {
-    status: "Actualizado con éxito :)",
+    status: true,
+    message: "Actualizado con éxito :)",
   };
 };
 
