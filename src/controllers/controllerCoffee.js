@@ -162,6 +162,7 @@ export const remove = async (id) => {
   }
   await coffee.destroy();
   return {
-    status: "Eliminado con éxito :v",
+    status: true,
+    message: "Eliminado con éxito :v"
   };
 };
