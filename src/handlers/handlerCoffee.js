@@ -72,7 +72,7 @@ export const postUploadCoffeAsset = async (req, res) => {
 export const updateCoffee = async (req, res) => {
   const { id } = req.params;
   try {
-    const status = await update(id, req.body);
+    const status = await update(id, req.body.data);
     res.status(200).json(status);
   } catch (error) {
     res.status(500).json({error: error.message});
