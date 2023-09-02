@@ -2,6 +2,12 @@ import mercadopago from "mercadopago";
 import axios from "axios";
 import dotenv from "dotenv";
 import sequelize from "../db.js";
+import { transporterUser } from "../emails/mailer.js";
+import {
+  paymentApproved,
+  paymentCancelled,
+  paymentPending,
+} from "../emails/templates.js";
 dotenv.config();
 const { User, Cart, Coffee, Order, Detail } = sequelize.models;
 const CoffeeModel =
@@ -15,8 +21,8 @@ export const createOrder = async (id) => {
   /**Verifica que exista el usuario y carrito*/
   const user = await User.findByPk(id);
   if (!user) throw new Error("El usuario no existe");
-  if (!user.validated) throw new Error("El email no esta validado")
-  
+  if (!user.validated) throw new Error("El email no esta validado");
+
   const products = await Cart.findAll({
     where: { UserId: id },
     include: [
@@ -115,7 +121,12 @@ export const completeOrder = async (id) => {
     }
     await order.update({ status: "Approved" });
 
-    //aqui va email de pago aprobado
+    transporterUser(
+      paymentApproved(metadata.email, metadata.name),
+      function (error, info) {
+        if (error) console.log(error);
+      }
+    );
   } else if (status === "rejected") {
     //En caso de ser rechazado el pago se actualiza el status de la orden y se envia el correspodiente email
     await Order.update(
@@ -123,9 +134,19 @@ export const completeOrder = async (id) => {
       { where: { id: metadata.order_id } }
     );
 
-    //aqui va email de pago rechazado
+    transporterUser(
+      paymentCancelled(metadata.email, metadata.name),
+      function (error, info) {
+        if (error) console.log(error);
+      }
+    );
   } else if (status === "in_process") {
     //En caso de estar pendiente el pago se envia el correspodiente email
-    //aqui va email de pago pendiente
+    transporterUser(
+      paymentPending(metadata.email, metadata.name),
+      function (error, info) {
+        if (error) console.log(error);
+      }
+    );
   }
 };
