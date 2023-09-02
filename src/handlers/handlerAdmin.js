@@ -7,7 +7,7 @@ import {
 export const login = async (req, res) => {
   try {
     const token = await authentication(req.body);
-    res.status(200).json(token);
+    res.status(200).json({auth_token: `Bearer ${token}`});
   } catch (error) {
     res.status(404).json({ error: error.message });
   }

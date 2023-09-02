@@ -26,16 +26,22 @@
  *                    type: string
  *                  name:
  *                    type: string
+ *                  lastname:
+ *                    type: string
  *                  image:
  *                    type: string
  *                  email:
  *                    type: string
+ *                  phone:
+ *                    type: string
+ *                  address:
+ *                    type: object
+ *                  localRegistration:
+ *                    type: boolean
  *                  validated:
  *                    type: boolean
  *                  isActive:
  *                    type: boolean
- *                  RoleId:
- *                    type: string
  *      403:
  *        description: FAIL
  *        content:

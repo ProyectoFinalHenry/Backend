@@ -148,7 +148,7 @@ export const passwordReset = async ({ token, newPassword }) => {
 
 export const getData = async (id) => {
   const user = await User.findByPk(id, {
-    attributes: { exclude: ["resetToken", "password"] },
+    attributes: { exclude: ["resetToken", "password", "RoleId"] },
     include: [
       { model: Role, attributes: ["role"] },
       {
@@ -161,7 +161,7 @@ export const getData = async (id) => {
             include: [
               {
                 model: Coffee,
-                attributes: ["id","name", "description", "image"],
+                attributes: ["id", "name", "description", "image"],
               },
             ],
           },
@@ -175,6 +175,8 @@ export const getData = async (id) => {
 };
 
 export const update = async (id, data) => {
+  if (!data)
+    throw new Error("No se recibio informacion para actualizar al usuario");
   await User.update(data, { where: { id } });
   return {
     status: "Actualizado con éxito",

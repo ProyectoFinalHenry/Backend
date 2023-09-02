@@ -15,7 +15,8 @@ export const createOrder = async (id) => {
   /**Verifica que exista el usuario y carrito*/
   const user = await User.findByPk(id);
   if (!user) throw new Error("El usuario no existe");
-
+  if (!user.validated) throw new Error("El email no esta validado")
+  
   const products = await Cart.findAll({
     where: { UserId: id },
     include: [
