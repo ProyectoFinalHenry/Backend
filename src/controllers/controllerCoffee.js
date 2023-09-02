@@ -15,7 +15,6 @@ export const getAll = async ({
       { model: TypeOfCoffee, attributes: ["type"] },
       { model: Origin, attributes: ["origin"] },
       { model: RoastingProfile, attributes: ["profile"] },
-      { model: Review, attributes: ["rating"] },
     ],
     attributes: {
       exclude: ["TypeOfCoffeeId", "RoastingProfileId", "OriginId"],
@@ -150,7 +149,8 @@ export const update = async (id, coffeeData) => {
     }
   }
   return {
-    status: "Actualizado con éxito :)",
+    status: true,
+    message: "Actualizado con éxito :)",
   };
 };
 
@@ -161,6 +161,7 @@ export const remove = async (id) => {
   }
   await coffee.destroy();
   return {
-    status: "Eliminado con éxito :v",
+    status: true,
+    message: "Eliminado con éxito :v"
   };
 };

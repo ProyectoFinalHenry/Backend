@@ -82,12 +82,9 @@ export const validateUpdate = [
   body("id").not().exists(),
   body("isActive").not().exists(),
   body("validated").not().exists(),
-  body("name").optional().isAlphanumeric().notEmpty().isLength({
-    min: 2,
-    max: 20,
-  }),
-  body("email").optional().trim().notEmpty().isEmail().escape(),
-  body("image").optional().trim().notEmpty().isURL(),
+  body("password").not().exists(),
+  body("localRegistration").not().exists(),
+  body("resetToken").not().exists(),
   (req, res, next) => {
     validate(req, res, next);
   },

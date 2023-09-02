@@ -23,6 +23,8 @@
  *        stock:
  *          type: integer
  *          description: Number of coffees available
+ *        averageRating:
+ *          type: integer
  *        isActive:
  *          type: boolean
  *          description: Defines if the coffee is available for sale
@@ -89,13 +91,6 @@
  *                        properties:
  *                          profile:
  *                            type: string
- *                      Reviews:
- *                        type: array
- *                        items:
- *                          type: object
- *                          properties:
- *                            ratings:
- *                              type: number
  *      403:
  *        description: FAIL
  *        content:
