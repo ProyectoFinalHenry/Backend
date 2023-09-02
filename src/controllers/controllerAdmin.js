@@ -1,4 +1,6 @@
 import sequelize from "../db.js";
+import { transporterUser } from "../emails/mailer.js";
+import { banUser } from "../emails/templates.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
@@ -39,6 +41,13 @@ export const changeStatus = async ({ userId }) => {
   if (!user) throw new Error("The user was not found");
 
   await user.update({ isActive: !user.isActive });
+
+  transporterUser.sendMail(
+    banUser(user.email, user.name),
+    function (error, info) {
+      if (error) console.log(error);
+    }
+  );
 
   return {
     status: "User updated",
