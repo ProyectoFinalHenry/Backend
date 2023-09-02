@@ -38,6 +38,14 @@ export default function (sequelize) {
           min: 0,
         },
       },
+      averageRating: {
+        type: DataTypes.INTEGER,
+        defaultValue: 5,
+        validate: {
+          min: 1,
+          max: 5,
+        }
+      },
       isActive: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,

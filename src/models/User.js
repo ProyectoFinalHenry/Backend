@@ -19,6 +19,16 @@ export default function (sequelize) {
           },
         },
       },
+      lastname: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          len: {
+            args: [2, 20],
+            msg: "El apellido debe contener entre 2 y 20 caracteres",
+          },
+        },
+      },
       image: {
         type: DataTypes.STRING,
         defaultValue:
@@ -37,6 +47,14 @@ export default function (sequelize) {
       },
       password: {
         type: DataTypes.STRING,
+      },
+      phone: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      address: {
+        type: DataTypes.JSON,
+        allowNull: true,
       },
       localRegistration: {
         type: DataTypes.BOOLEAN,

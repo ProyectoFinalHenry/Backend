@@ -27,7 +27,7 @@ export const authentication = async ({ email, password }) => {
 
 export const getUsers = async () => {
   const users = await User.findAll({
-    attributes: { exclude: ["resetToken", "password"] },
+    attributes: { exclude: ["resetToken", "password", "RoleId"] },
   });
   if (!users.length) throw new Error("No users were found");
 
