@@ -2,7 +2,7 @@ import dataUser from "./dataUser.js";
 import dataReview from "./dataReview.js";
 
 const seedUser = async (sequelize) => {
-    const { Coffee, Review, User, Role } = sequelize.models;
+    const { Coffee, Review, User, Role, Order, Detail } = sequelize.models;
     const coffees = await Coffee.findAll();
 
     for (let i = 0; i < dataUser.length; i++) {
@@ -48,8 +48,15 @@ const seedUser = async (sequelize) => {
         await review.setUser(usr);
         await product.addReview(review);
 
-    }
+        const order = await Order.create({date, totalPrice: product.price, status: "Approved"});
+        const detail = await Detail.create({quantity: 1, unitPrice: product.price});
 
+        await Promise.all([
+            order.addDetail(detail),
+            detail.setCoffee(product),
+            order.setUser(usr),
+        ])
+    }
 };
 
 export default seedUser;

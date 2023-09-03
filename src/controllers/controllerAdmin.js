@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
 dotenv.config();
-const { User, Role } = sequelize.models;
+const { User, Role, Order, Detail, Coffee, TypeOfCoffee } = sequelize.models;
 
 export const authentication = async ({ email, password }) => {
   const user = await User.findOne({ where: { email } });
@@ -51,5 +51,70 @@ export const changeStatus = async ({ userId }) => {
 
   return {
     status: "User updated",
+  };
+};
+
+export const getData = async () => {
+  const orders = await Order.findAll({
+    attributes: ["date", "totalPrice"],
+    include: [
+      {
+        model: Detail,
+        attributes: ["quantity", "unitPrice"],
+        include: [
+          {
+            model: Coffee,
+            attributes: ["name", "stock"],
+            include: [
+              {
+                model: TypeOfCoffee,
+                attributes: ["type"],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  });
+
+  let sales = {}
+  let types = {
+    
+    whole: {
+      name: "Café en grano entero",
+      total: 0
+    },
+    ground: {
+      name : "Café molido",
+      total: 0
+    },
+    instant: {
+      name: "Café instantáneo",
+      total: 0
+    },
+    capsule: {
+      name: "Café en cápsula",
+      total: 0
+    },
+  }
+  for(let order of orders) {
+    let date = order.date.substring(0, 7);
+    if (sales[date]) {
+      sales[date] += Number(order.totalPrice);
+    } else {
+      sales[date] = Number(order.totalPrice);
+    }
+    
+    for(let detail of order.Details) {
+      if(detail.Coffee.TypeOfCoffee.type === "Café en grano entero") types.whole.total += 1;
+      if(detail.Coffee.TypeOfCoffee.type === "Café molido") types.ground.total += 1;
+      if(detail.Coffee.TypeOfCoffee.type === "Café instantáneo") types.instant.total += 1;
+      if(detail.Coffee.TypeOfCoffee.type === "Café en cápsula") types.capsule.total += 1;
+    }
+  }
+
+  return {
+    sales,
+    types
   };
 };
