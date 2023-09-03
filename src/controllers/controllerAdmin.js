@@ -78,24 +78,13 @@ export const getData = async () => {
   });
 
   let sales = {}
-  let types = {
-    
-    whole: {
-      name: "Café en grano entero",
-      total: 0
-    },
-    ground: {
-      name : "Café molido",
-      total: 0
-    },
-    instant: {
-      name: "Café instantáneo",
-      total: 0
-    },
-    capsule: {
-      name: "Café en cápsula",
-      total: 0
-    },
+  let salesData = {
+    data: [],
+    categories: [],
+  }
+  let typesData= {
+    series: [0, 0, 0, 0],
+    labels: ["Café en grano entero", "Café molido", "Café instantáneo", "Café en cápsula"]
   }
   for(let order of orders) {
     let date = order.date.substring(0, 7);
@@ -103,18 +92,22 @@ export const getData = async () => {
       sales[date] += Number(order.totalPrice);
     } else {
       sales[date] = Number(order.totalPrice);
-    }
-    
+    } 
     for(let detail of order.Details) {
-      if(detail.Coffee.TypeOfCoffee.type === "Café en grano entero") types.whole.total += 1;
-      if(detail.Coffee.TypeOfCoffee.type === "Café molido") types.ground.total += 1;
-      if(detail.Coffee.TypeOfCoffee.type === "Café instantáneo") types.instant.total += 1;
-      if(detail.Coffee.TypeOfCoffee.type === "Café en cápsula") types.capsule.total += 1;
+      if(detail.Coffee.TypeOfCoffee.type === "Café en grano entero") typesData.series[0] += 1;
+      if(detail.Coffee.TypeOfCoffee.type === "Café molido") typesData.series[1] += 1;
+      if(detail.Coffee.TypeOfCoffee.type === "Café instantáneo") typesData.series[2] += 1;
+      if(detail.Coffee.TypeOfCoffee.type === "Café en cápsula") typesData.series[3] += 1;
     }
   }
 
+  for(let date in sales) {
+    salesData.categories.push(date);
+    salesData.data.push(sales[date]);
+  }
+
   return {
-    sales,
-    types
+    salesData,
+    typesData
   };
 };
