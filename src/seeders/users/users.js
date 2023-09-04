@@ -25,6 +25,7 @@ const seedUser = async (sequelize) => {
                 name,
                 email,
                 password,
+                createdAt: date
             },
         });
 
