@@ -25,7 +25,8 @@ export const getAllUsers = async (req, res) => {
 
 export const activeUser = async (req, res) => {
   try {
-    const status = await changeStatus(req.body);
+    const { userId } = req.params; // le agregue el ID
+    const status = await changeStatus({ userId });
     res.status(200).json(status);
   } catch (error) {
     res.status(404).json({ error: error.message });
