@@ -72,6 +72,6 @@ export default function (sequelize) {
         type: DataTypes.STRING,
       },
     },
-    { timestamps: false }
+    { timestamps: true }
   );
 }

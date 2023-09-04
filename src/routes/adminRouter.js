@@ -4,7 +4,7 @@ const adminRouter = Router();
 
 adminRouter
     .get("/user", getAllUsers)
-    .get("/data/sales", getSales)
+    .get("/data", getSales)
     .put("/user/status", activeUser)
     .post("/login", login)
 
