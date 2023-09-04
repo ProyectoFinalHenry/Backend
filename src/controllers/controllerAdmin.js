@@ -55,6 +55,7 @@ export const changeStatus = async ({ userId }) => {
 };
 
 export const getData = async () => {
+  //Aquí se da el formato de la data de compras y categorias-----
   const orders = await Order.findAll({
     attributes: ["date", "totalPrice"],
     include: [
@@ -77,37 +78,88 @@ export const getData = async () => {
     ],
   });
 
-  let sales = {}
+  let sales = {};
   let salesData = {
     data: [],
     categories: [],
-  }
-  let typesData= {
+  };
+  let typesData = {
     series: [0, 0, 0, 0],
-    labels: ["Café en grano entero", "Café molido", "Café instantáneo", "Café en cápsula"]
-  }
-  for(let order of orders) {
+    labels: [
+      "Café en grano entero",
+      "Café molido",
+      "Café instantáneo",
+      "Café en cápsula",
+    ],
+  };
+  for (let order of orders) {
     let date = order.date.substring(0, 7);
     if (sales[date]) {
       sales[date] += Number(order.totalPrice);
     } else {
       sales[date] = Number(order.totalPrice);
-    } 
-    for(let detail of order.Details) {
-      if(detail.Coffee.TypeOfCoffee.type === "Café en grano entero") typesData.series[0] += 1;
-      if(detail.Coffee.TypeOfCoffee.type === "Café molido") typesData.series[1] += 1;
-      if(detail.Coffee.TypeOfCoffee.type === "Café instantáneo") typesData.series[2] += 1;
-      if(detail.Coffee.TypeOfCoffee.type === "Café en cápsula") typesData.series[3] += 1;
+    }
+    for (let detail of order.Details) {
+      if (detail.Coffee.TypeOfCoffee.type === "Café en grano entero")
+        typesData.series[0] += 1;
+      if (detail.Coffee.TypeOfCoffee.type === "Café molido")
+        typesData.series[1] += 1;
+      if (detail.Coffee.TypeOfCoffee.type === "Café instantáneo")
+        typesData.series[2] += 1;
+      if (detail.Coffee.TypeOfCoffee.type === "Café en cápsula")
+        typesData.series[3] += 1;
     }
   }
 
-  for(let date in sales) {
+  for (let date in sales) {
     salesData.categories.push(date);
     salesData.data.push(sales[date]);
   }
 
+  //Aquí se da formato a la data de users----------------------
+
+  const users = await User.findAll({
+    attributes: ["createdAt"],
+  });
+  let dataUser = {};
+  let usersData = {
+    data: [],
+    categories: [],
+  };
+
+  for (let user of users) {
+    let date = user.createdAt.toISOString().substring(0, 7);
+    if (dataUser[date]) {
+      dataUser[date] += 1;
+    } else {
+      dataUser[date] = 1;
+    }
+  }
+  for (let user in dataUser) {
+    usersData.categories.push(user);
+    usersData.data.push(dataUser[user]);
+  }
+
+  //Aquí se da formato a la data de cafés----------------------
+
+  const coffees = await Coffee.findAll({
+    attributes: ["name", "stock"],
+  });
+
+  const coffeesData = {
+    data: [],
+    categories: [],
+  };
+
+  for (let coffee of coffees) {
+    coffeesData.data.push(coffee.stock);
+    coffeesData.categories.push(coffee.name);
+  }
+
   return {
     salesData,
-    typesData
+    typesData,
+    usersData,
+    coffeesData,
   };
 };
