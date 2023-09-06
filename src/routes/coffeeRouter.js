@@ -13,15 +13,15 @@ import {
   validatePost,
   validatePut,
 } from "../middlewares/coffee.js";
-
+import { validateAdmin } from "../middlewares/admin.js";
 const coffeeRouter = Router();
 
 coffeeRouter
   .get("/", validateQuery, getCoffees)
   .get("/:id", validateId, getCoffeeById)
-  .post("/", validatePost, postCoffee) //agregar validacion de admin
+  .post("/", validateAdmin, validatePost, postCoffee) //agregar validacion de admin
   .post("/upload", postUploadCoffeAsset)
-  .put("/:id", validateId, validatePut, updateCoffee) //agregar validacion de admin
+  .put("/:id",validateAdmin, validateId, validatePut, updateCoffee) //agregar validacion de admin
   .delete("/:id", validateId, deleteCoffee); //agregar validacion de admin
 
 export default coffeeRouter;
