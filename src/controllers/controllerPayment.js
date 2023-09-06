@@ -60,8 +60,7 @@ export const createOrder = async (id) => {
     payment_methods: {
       installments: 1,
     },
-    notification_url:
-      "https://a894-168-227-97-123.ngrok-free.app/payment/webhook",
+    notification_url: "https://backend-mniu.onrender.com/payment/webhook",
     metadata: {
       id: user.id,
     },
