@@ -47,7 +47,7 @@ export const authentication = async ({ email, password }) => {
   const isValidPassword = await bcrypt.compare(password, user.password);
   if (!isValidPassword) throw new Error("Email o contraseña incorrecta");
   if (!user.isActive)
-    throw new Error("Este usuario tiene el acceso restringido");
+    throw new Error("Tu cuenta ha sido suspendida. Por favor, ponte en contacto con el soporte técnico para más información.");
 
   const token = jwt.sign(
     { id: user.id, role: user.RoleId },
