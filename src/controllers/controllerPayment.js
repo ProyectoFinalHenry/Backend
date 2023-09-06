@@ -10,8 +10,6 @@ import {
 } from "../emails/templates.js";
 dotenv.config();
 const { User, Cart, Coffee, Order, Detail } = sequelize.models;
-const CoffeeModel =
-  Coffee; /**renombro a Coffee ya que si no chocara con otra constante*/
 
 mercadopago.configure({
   access_token: process.env.MP_TOKEN,
@@ -27,28 +25,19 @@ export const createOrder = async (id) => {
     where: { UserId: id },
     include: [
       {
-        model: CoffeeModel,
+        model: Coffee,
         attributes: ["name", "price", "image", "description"],
       },
     ],
   });
   if (!products.length) throw new Error("El carrito esta vacio");
 
-  /**Apartir de aquí se crea la orden y detalles de compra en la db, 
-    y se setean los items de la orden de MP*/
-  const order = await Order.create({
-    date: new Date(),
-    totalPrice: 1 /**Se crea la orden con un valor de 1, para hacer un solo bucle*/,
-  });
-
-  let total = 0;
+  /**Apartir de aquí se setean los items de la orden de MP*/
   let items = [];
-
   for (const product of products) {
     const { quantity, CoffeeId, Coffee } = product;
     const { name, price, image, description } = Coffee;
 
-    total += price * quantity;
     items.push({
       id: CoffeeId,
       title: name,
@@ -58,14 +47,7 @@ export const createOrder = async (id) => {
       picture_url: image,
       description,
     });
-
-    const [coffee, detail] = await Promise.all([
-      CoffeeModel.findByPk(CoffeeId),
-      Detail.create({ quantity, unitPrice: price }),
-    ]);
-    await Promise.all([detail.setCoffee(coffee), order.addDetail(detail)]);
   }
-  await Promise.all([order.update({ totalPrice: total }), order.setUser(user)]);
   //Configuracion de las preferencias de MP-----------------------------------
 
   let preferences = {
@@ -75,12 +57,12 @@ export const createOrder = async (id) => {
       failure: "https://granodeoro.vercel.app/products/page/1",
       pending: "https://granodeoro.vercel.app/products/page/1",
     },
+    payment_methods: {
+      installments: 1,
+    },
     notification_url: "https://backend-mniu.onrender.com/payment/webhook",
     metadata: {
       id: user.id,
-      name: user.name,
-      email: user.email,
-      order_id: order.id,
     },
   };
   //Finalmente crea la orden de compra de MP--------------------------------
@@ -100,16 +82,48 @@ export const completeOrder = async (id) => {
       })
     ).data;
 
-  await Cart.destroy({ where: { UserId: metadata.id } }); //Se borra el contenido del carrito
+  //Trae los productos del carrito y al usuario
+  const user = await User.findByPk(metadata.id);
+  const products = await Cart.findAll({
+    where: { UserId: metadata.id },
+    include: [
+      {
+        model: Coffee,
+        attributes: ["price"],
+      },
+    ],
+  });
 
+  //Crea la orden en la Db y sus respectivos detalles
+  const order = await Order.create({
+    date: new Date(),
+    totalPrice: 1 /**Se crea la orden con un valor de 1, para hacer un solo bucle*/,
+  });
+  let total = 0;
+
+  for (let product of products) {
+    const { quantity, CoffeeId } = product;
+
+    total += product.Coffee.price * quantity;
+    const [coffee, detail] = await Promise.all([
+      Coffee.findByPk(CoffeeId),
+      Detail.create({ quantity, unitPrice: product.Coffee.price }),
+    ]);
+    await Promise.all([detail.setCoffee(coffee), order.addDetail(detail)]);
+  }
+  await Promise.all([
+    order.update({ totalPrice: total }),
+    order.setUser(user),
+    Cart.destroy({ where: { UserId: metadata.id } }),
+  ]);
+
+  //A partir de aquí se maneja la orden dependiendo del estado del pago
   if (status === "approved" && status_detail === "accredited") {
-    //En caso de ser aprobado el pago se actualiza el stock, desactiva los productos con valor de 0, actualiza el status de la orden y envia un email de agradecimineto
-    const order = await Order.findByPk(metadata.order_id, {
+    const orden = await Order.findByPk(order.id, {
       include: [{ model: Detail, attributes: ["quantity", "CoffeeId"] }],
     });
 
-    for (let detail of order.Details) {
-      console.log(detail);
+    for (let detail of orden.Details) {
       const { quantity, CoffeeId } = detail;
       const coffee = await Coffee.findByPk(CoffeeId);
       const stock = coffee.stock - quantity;
@@ -119,31 +133,28 @@ export const completeOrder = async (id) => {
       };
       await coffee.update(updateData);
     }
-    await order.update({ status: "Approved" });
+    await orden.update({ status: "Approved" });
 
-    transporterUser(
-      paymentApproved(metadata.email, metadata.name),
+    transporterUser.sendMail(
+      paymentApproved(user.email, user.name),
       function (error, info) {
         if (error) console.log(error);
       }
     );
   } else if (status === "rejected") {
     //En caso de ser rechazado el pago se actualiza el status de la orden y se envia el correspodiente email
-    await Order.update(
-      { status: "Cancelled" },
-      { where: { id: metadata.order_id } }
-    );
+    await Order.update({ status: "Cancelled" }, { where: { id: order.id } });
 
-    transporterUser(
-      paymentCancelled(metadata.email, metadata.name),
+    transporterUser.sendMail(
+      paymentCancelled(user.email, user.name),
       function (error, info) {
         if (error) console.log(error);
       }
     );
   } else if (status === "in_process") {
     //En caso de estar pendiente el pago se envia el correspodiente email
-    transporterUser(
-      paymentPending(metadata.email, metadata.name),
+    transporterUser.sendMail(
+      paymentPending(user.email, user.name),
       function (error, info) {
         if (error) console.log(error);
       }
