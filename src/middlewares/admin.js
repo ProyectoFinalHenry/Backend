@@ -22,7 +22,6 @@ export const validateAdmin = [
         const user = await Role.findByPk(role);
         if(user.role === "user") throw new Error("You do not have access");
   
-        req.userId = id;
       }),
     (req, res, next) => {
       validate(req, res, next);
