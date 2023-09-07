@@ -10,7 +10,7 @@ dotenv.config();
 
 const PORT = process.env.SERVER_PORT || 3001;
 
-sequelize.sync({ force: true }).then(async () => {
+sequelize.sync({ force: false }).then(async () => {
   await seedCoffee(sequelize);
   await seedRole(sequelize);
   await seedUser(sequelize);
