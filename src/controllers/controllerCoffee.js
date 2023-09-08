@@ -9,6 +9,8 @@ export const getAll = async ({
   origin,
   roastingProfile,
   name,
+  status,
+  order,
 }) => {
   let optionsDB = {
     include: [
@@ -39,8 +41,16 @@ export const getAll = async ({
     where.RoastingProfileId = roastingProfile;
   }
 
+  if (status) {
+    where.isActive = status;
+  }
+
   if (Object.keys(where).length > 0) {
     optionsDB.where = where;
+  }
+
+  if(order) {
+    optionsDB.order = [["name", order]]
   }
 
   const dataDB = await Coffee.findAll(optionsDB);
