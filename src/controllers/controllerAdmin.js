@@ -76,6 +76,7 @@ export const getData = async () => {
         ],
       },
     ],
+    order: [["date", "ASC"]],
   });
 
   let sales = {};
@@ -120,6 +121,7 @@ export const getData = async () => {
 
   const users = await User.findAll({
     attributes: ["createdAt"],
+    order: [["createdAt", "ASC"]],
   });
   let dataUser = {};
   let usersData = {
