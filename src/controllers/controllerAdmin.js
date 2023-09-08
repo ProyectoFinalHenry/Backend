@@ -4,6 +4,7 @@ import { banUser } from "../emails/templates.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
+import { Op } from "sequelize";
 dotenv.config();
 const { User, Role, Order, Detail, Coffee, TypeOfCoffee } = sequelize.models;
 
@@ -27,10 +28,26 @@ export const authentication = async ({ email, password }) => {
   return token;
 };
 
-export const getUsers = async () => {
-  const users = await User.findAll({
+export const getUsers = async ({ name, status, order }) => {
+  let optionsDB = {
     attributes: { exclude: ["resetToken", "password", "RoleId"] },
-  });
+  };
+  const where = {};
+
+  if (name) {
+    where.name = { [Op.iLike]: `%${name}%` };
+  }
+  if(status) {
+    where.isActive = status;
+  }
+  if (Object.keys(where).length > 0) {
+    optionsDB.where = where;
+  }
+  if(order) {
+    optionsDB.order = [["name", `${order}`]]
+  }
+  
+  const users = await User.findAll(optionsDB);
   if (!users.length) throw new Error("No users were found");
 
   return users;
