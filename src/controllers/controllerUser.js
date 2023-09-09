@@ -68,19 +68,14 @@ export const thirdPartyAuthentication = async ({ name, email, image }) => {
       email,
       image,
       localRegistration: false,
+      validated: true,
     },
   });
   if (created) {
     const role = await Role.findOne({ where: { role: "user" } });
     await user.setRole(role);
-
-    transporterUser.sendMail(
-      registration(email, name, user.id),
-      function (error, info) {
-        if (error) console.log(error);
-      }
-    );
   }
+  
   const token = jwt.sign(
     { id: user.id, role: user.RoleId },
     process.env.SECRET_KEY,
