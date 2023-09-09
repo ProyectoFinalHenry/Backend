@@ -74,6 +74,7 @@ export const changeStatus = async ({ userId }) => {
 export const getData = async () => {
   //Aquí se da el formato de la data de compras y categorias-----
   const orders = await Order.findAll({
+    where: { status: "Approved" },
     attributes: ["date", "totalPrice"],
     include: [
       {

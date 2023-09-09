@@ -20,6 +20,7 @@ export const createOrder = async (id) => {
   const user = await User.findByPk(id);
   if (!user) throw new Error("El usuario no existe");
   if (!user.validated) throw new Error("El email no esta validado");
+  if (!user.isActive) throw new Error("Lo sentimos, no tienes permiso para realizar esta acción. Tu cuenta ha sido suspendida/baneada. Por favor, ponte en contacto con el soporte técnico para más información.");
 
   const products = await Cart.findAll({
     where: { UserId: id },
