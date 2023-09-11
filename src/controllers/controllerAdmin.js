@@ -37,16 +37,16 @@ export const getUsers = async ({ name, status, order }) => {
   if (name) {
     where.name = { [Op.iLike]: `%${name}%` };
   }
-  if(status) {
+  if (status) {
     where.isActive = status;
   }
   if (Object.keys(where).length > 0) {
     optionsDB.where = where;
   }
-  if(order) {
+  if (order) {
     optionsDB.order = [["name", `${order}`]]
   }
-  
+
   const users = await User.findAll(optionsDB);
   if (!users.length) throw new Error("No users were found");
 
