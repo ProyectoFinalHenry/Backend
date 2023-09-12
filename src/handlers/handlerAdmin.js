@@ -8,7 +8,7 @@ import {
 export const login = async (req, res) => {
   try {
     const token = await authentication(req.body);
-    res.status(200).json({auth_token: `Bearer ${token}`});
+    res.status(200).json({ auth_token: `Bearer ${token}` });
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
@@ -16,7 +16,7 @@ export const login = async (req, res) => {
 
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await getUsers(req.body);
+    const users = await getUsers(req.query);
     res.status(200).json(users);
   } catch (error) {
     res.status(404).json({ error: error.message });
